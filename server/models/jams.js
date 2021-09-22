@@ -17,18 +17,15 @@ const jamSchema = new Schema({
   },
   coordinates: {
     type: Array,
-    required: true
   },
   host: {
     type: String,
-    required: true
   },
   numOfParticipants: {
     type: Number
   },
   languages: {
     type: Array,
-    required: true
   },
   pastEvent: {
     type: Boolean
