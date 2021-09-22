@@ -10,7 +10,7 @@ import {
 
 import "@reach/combobox/styles.css";
 
-function Search() {
+function Search({setLocation}) {
   const {
     ready,
     value,
@@ -24,6 +24,8 @@ function Search() {
 
   const handleSelect = (val) => {
     setValue(val, false);
+    console.log('handleSelect running');
+    setLocation(val);
   };
 
   return (

@@ -12,4 +12,8 @@ apiService.postEvent = (event) => {
     .catch((err) => console.log(err));
 }
 
+apiService.getJams = () => {
+  return
+}
+
 export default apiService

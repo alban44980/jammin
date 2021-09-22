@@ -9,7 +9,7 @@ function FindJam() {
     <div className="findJam-main">
       <form className="find-form" action="">
       <h1 id="find-jam">👇👇 Enter your location to find a jam in your city 👇👇</h1>
-      <Search />
+      <Search/>
       <button className="find-btn">Search</button>
       </form>
     </div>

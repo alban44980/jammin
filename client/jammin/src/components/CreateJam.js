@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Search from './Search';
 import apiService from './../ApiService';
 
 
@@ -17,7 +18,7 @@ const initialState = {
 function CreateJam() {
 
   const [state, setState] = useState(initialState);
-
+//use this setState to upade  the location
 
   function handleChange (e) {
     const {name, value} = e.target;
@@ -35,6 +36,14 @@ function CreateJam() {
     setState(initialState)
   }
 
+  function setLocation(loc) {
+    setState((previous) => ({
+      ...previous,
+      location: loc
+    }))
+  }
+
+
   return (
     <div className="createJam-main">
       <form className="jam-form" id="jam-form" onSubmit={handleSubmit}>
@@ -46,13 +55,15 @@ function CreateJam() {
         onChange={handleChange}
         className="event-input"
         />
-        <input type="text"
+        {/* <input type="text"
         placeholder = "Location"
         name = "location"
         value={state.location}
         onChange={handleChange}
         className="event-input"
-        />
+        /> */}
+        <Search setLocation={setLocation}/>
+
         <textarea
         className="event-input"
         name="description"

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import FindJam from './FindJam';
-import CreateJam from './CreateJam';
-import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
+// import FindJam from './FindJam';
+// import CreateJam from './CreateJam';
+// import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 
 
 function Home() {
