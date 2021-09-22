@@ -8,21 +8,57 @@
   width: 100vw;
   height: 100vh;
 }
-
-.navbar{
-  background-color: yellow;
+.nav-container {
+  background-color: rgb(94, 243, 243);
   width: 100%;
   height: 7vh;
   display: flex;
-  justify-content: flex-end;
   list-style-type: none;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-right {
+  display: flex;
+  margin-left: auto;
 }
 
 .nav-el {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 1rem
+  margin: 1rem;
+}
+
+.nav-el:hover {
+  cursor: pointer
+}
+
+
+.linktag{
+  height: 100%;
+  width: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.nav-container h2 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-container h2:hover {
+  background-color: rgb(147, 105, 245);
+  cursor: pointer
 }
 
 .main {
@@ -33,6 +69,8 @@
   align-items: center;
   margin-top: 3rem
 }
+
+
 
 .home-btn {
   width: 25vw;
@@ -46,13 +84,15 @@
 }
 
 .createJam-main{
-  background-color: green;
-  height: 100%;
-  width: 40%;
+  background-color: rgb(147, 105, 245);
+  height: 80%;
+  width: 35%;
   margin: 1rem auto;
   display: flex;
   justify-content: center;
+  border-radius: 20px;
 }
+
 
 .createJam-main h1 {
   margin-top: 1rem;
@@ -113,5 +153,3 @@
   justify-content: center;
   align-items: center;
 }
-
-

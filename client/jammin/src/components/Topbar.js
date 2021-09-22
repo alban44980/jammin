@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
+
+
 
 function Topbar() {
   return (
-    <div>
-      <ul className="navbar">
+    <div className="nav-container">
+      <Link to='/' class="linktag">
+        <h2>Home</h2>
+      </Link>
+      <ul className="navbar-right">
         <li className="nav-el">Login</li>
         <li className="nav-el">Sign up</li>
       </ul>
