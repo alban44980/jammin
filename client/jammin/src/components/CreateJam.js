@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import apiService from './../ApiService';
+
 
 const initialState = {
   date: '',
@@ -17,15 +19,27 @@ function CreateJam() {
   const [state, setState] = useState(initialState);
 
 
-  function handleChange () {
+  function handleChange (e) {
+    const {name, value} = e.target;
+    console.log(`${name}, ${value}`)
+    setState((previous) => ({
+      ...previous,
+      [name]: value
+    }))
+  }
 
+  function handleSubmit (e) {
+    e.preventDefault();
+    console.log('form submitted');
+    apiService.postEvent(state);
+    setState(initialState)
   }
 
   return (
     <div className="createJam-main">
-      <form className="jam-form">
+      <form className="jam-form" id="jam-form" onSubmit={handleSubmit}>
         <h1>CREATE YOUR JAM 🥳🥳🥳 </h1>
-        <input type="datetime-local"
+        <input type="date"
         placeholder = "Date"
         name = "date"
         value={state.date}
@@ -39,14 +53,16 @@ function CreateJam() {
         onChange={handleChange}
         className="event-input"
         />
-        <input type="text"
-        placeholder = "Description"
-        name = "description"
+        <textarea
+        className="event-input"
+        name="description"
+        id="event-description"
+        placeholder="DESCRIPTION OF YOUR JAM"
         value={state.description}
         onChange={handleChange}
-        className="event-input"
-        />
-
+        cols="30"
+        rows="10"></textarea>
+        <button class="create-btn">CREATE MY EVENT</button>
       </form>
     </div>
   )

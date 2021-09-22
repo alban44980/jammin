@@ -2,8 +2,11 @@ import React from 'react'
 
 function FindJam() {
   return (
-    <div>
-      <h1>I AM THE FIND JAM COMPONENT</h1>
+    <div className="findJam-main">
+      <form action="">
+      <h1 id="find-jam">👇👇 Enter your location to find a jam in your city 👇👇</h1>
+      <input type="text" placeholder="city"/>
+      </form>
     </div>
   )
 }
