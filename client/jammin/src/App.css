@@ -148,6 +148,20 @@
   font-size: 3rem;
 }
 
+.find-form {
+  display: flex;
+  align-items: center;
+}
+
+.find-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  width: 40%;
+  height: 5%
+}
+
 #find-jam {
   display: flex;
   justify-content: center;
