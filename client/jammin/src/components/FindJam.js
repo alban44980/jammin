@@ -58,6 +58,9 @@ function FindJam() {
     libraries
   })
 
+  if(loadError) return "Error loading maps";
+  if (!isLoaded) return "Loading Maps";
+
 
   return (
     <div className="findJam-main">
@@ -80,9 +83,14 @@ function FindJam() {
         zoom={13}
         center={center}
         >
-          {markers.map(marker => <Marker
+          {/* <Marker
+          position={{lat: 41.3950183, lng: 2.1977535}}
+          /> */}
+          {markers.map(marker => (
+          <Marker
           position={{ lat: marker.lat, lng: marker.lng}}
-          />)}
+          />
+          ))}
         </GoogleMap>
       </div>
       </form>
