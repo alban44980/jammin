@@ -15,8 +15,12 @@ function EventPage(props) {
         <p className="data-item" id="description">More about the event :{data.description}</p>
       </div>
       <div className="socialmap">
-        <div className="map-container"></div>
-        <div className="social-container"></div>
+        <div className="map-container">
+          <h1>MAP</h1>
+        </div>
+        <div className="social-container">
+          <h1>SOCIAL</h1>
+        </div>
       </div>
     </div>
   )

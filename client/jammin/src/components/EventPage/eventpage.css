@@ -1,7 +1,7 @@
 .event-container {
   background-color: rgba(0, 0, 0, 0.5);
   width: 90%;
-  height: 90%;
+  height: 85%;
   margin: 2rem auto;
   color: white;
   display: flex;
@@ -29,7 +29,7 @@
 }
 #location {
   border-bottom: 1px solid white;
-  padding-bottom: 2.8rem
+  padding-bottom: 2rem
 }
 #description {
   margin: 2rem 4rem;
@@ -40,19 +40,21 @@
 .socialmap {
   display: flex;
   flex-direction: column;
-  background-color: red;
-  width: 35%
+  width: 35%;
+  border: 1px solid white;
 }
 
 .map-container {
   height: 35%;
-  background-color: purple;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid white;
 }
 
 .social-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 65%;
-  background-color: yellow;
 }
