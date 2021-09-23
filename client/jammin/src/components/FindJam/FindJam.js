@@ -24,6 +24,7 @@ function FindJam() {
   const [jams, setJams] = useState([]);
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
+  const [error, setError] = useState('');
 
   function searchJams (input) {
     console.log('searchJams function running')
@@ -42,6 +43,10 @@ function FindJam() {
   async function handleSubmit (e) {
     e.preventDefault();
     const result = await apiService.getJams({city: searchVal});
+    if (!result.length) {setError('OOPS it seems there is no jams coming up in this city 😅')}
+    else {
+      setError('')
+    }
     setJams(result);
     console.log(result);
     let eventsCoords = getCoords(result);
@@ -91,7 +96,7 @@ function FindJam() {
                       />
                       ))}
                     </GoogleMap> :
-                    <h1 id="search-fail">OOPS it seems there is no jams coming up in this city 😅</h1>
+                    <h1 id="search-fail">{error}</h1>
                   }
           </div>
 
