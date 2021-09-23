@@ -20,16 +20,31 @@ function FindJam() {
   const [searchVal, setSearchVal] = useState({location: null});
   const [jams, setJams] = useState([]);
   const [center, setCenter] = useState(null);
+  const [markers, setMarkers] = useState([]);
 
   function searchJams (input) {
     console.log('searchJams function running')
     setSearchVal(input)
   }
 
+  function getCoords(input) {
+    let result = [];
+    for (let i = 0; i < input.length; i++) {
+      result.push(input[i].locCords);
+    }
+    console.log(result);
+    return result
+  }
+
   async function handleSubmit (e) {
     e.preventDefault();
     const result = await apiService.getJams({city: searchVal});
-    setJams(result)
+    setJams(result);
+    console.log(result);
+    let eventsCoords = getCoords(result);
+    setMarkers(eventsCoords);
+    //get coordinates of every element of the array results
+    // setMarkers()
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${searchVal}&key=AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM`)
     .then((res) => res.json())
     .then((data => {
@@ -65,7 +80,9 @@ function FindJam() {
         zoom={13}
         center={center}
         >
-
+          {markers.map(marker => <Marker
+          position={{ lat: marker.lat, lng: marker.lng}}
+          />)}
         </GoogleMap>
       </div>
       </form>

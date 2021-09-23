@@ -93,7 +93,9 @@ function CreateJam() {
         onChange={handleChange}
         className="event-input"
         />
+        <div id="test">
         <Search setCity={setCity}/>
+        </div>
         <Search setLocation={setLocation} state={state}/>
         <input type="text"
         placeholder="Languages spoken ?"
