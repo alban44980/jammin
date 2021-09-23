@@ -12,8 +12,17 @@ apiService.postEvent = (event) => {
     .catch((err) => console.log(err));
 }
 
-apiService.getJams = () => {
-  return
+apiService.getJams = (location) => {
+  fetch(`${BASE_URL}/searchjam`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(location),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 }
+
+
 
 export default apiService

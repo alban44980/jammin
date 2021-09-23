@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
 import Search from './Search';
-import ApiService from '../ApiService';
-
-
-
+import apiService from '../ApiService';
 
 
 function FindJam() {
 
-  const [searchVal, setSearchVal] = useState('')
+  const [searchVal, setSearchVal] = useState({location: null});
 
   function searchJams (input) {
     console.log('searchJams function running')
@@ -17,11 +14,12 @@ function FindJam() {
 
   function handleSubmit (e) {
     e.preventDefault();
-    console.log('search submitted');
+    console.log('search submitted with');
     console.log(searchVal);
     //API GET CALL HERE
+    apiService.getJams({location: searchVal});
     //Reset the searchVal state
-    setSearchVal('')
+    // setSearchVal('')
   }
 
 

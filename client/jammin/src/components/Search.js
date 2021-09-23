@@ -24,7 +24,6 @@ function Search({setLocation, searchJams}) {
 
   const handleSelect = (val) => {
     setValue(val, false);
-    console.log('handleSelect running');
     if(setLocation){
     setLocation(val);
     }
