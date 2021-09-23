@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import Search from './Search';
-import apiService from '../ApiService';
+import Search from '../Search/Search';
+import apiService from '../../ApiService';
 import {
   GoogleMap,
   useLoadScript,
@@ -68,30 +68,40 @@ function FindJam() {
       <h1 id="find-jam">👇👇 Enter your location to find a jam in your city 👇👇</h1>
       <Search searchJams={searchJams}/>
       <button className="find-btn">Search</button>
-      <div>
-        {jams.length? jams.map(jam =>
-        <div>
-          <h1>{jam.title}</h1>
-          <h1>{jam.date}</h1>
-          <h2>Participants: {jam.numOfParticipants}</h2>
+      <div className="jams-list-container">
+        <div className="jams-list">
+          {jams.length? jams.map(jam =>
+          <div>
+            <h1>{jam.title}</h1>
+            <h1>{jam.date}</h1>
+            <h2>Participants: {jam.numOfParticipants}</h2>
+          </div>
+            ): null}
         </div>
-          ): null}
+        <div className="maps-container">
+          {jams.length ?
+          <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          zoom={13}
+          center={center}
+          >
+            {/* <Marker
+            position={{lat: 41.3950183, lng: 2.1977535}}
+            /> */}
+            {markers.map(marker => (
+            <Marker
+            position={{ lat: marker.lat, lng: marker.lng}}
+            />
+            ))}
+          </GoogleMap> :
+          <h1>OOPS it seems there is no jams coming up in this city 😅</h1>
+        }
+
+        </div>
+
       </div>
       <div>
-        <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={13}
-        center={center}
-        >
-          {/* <Marker
-          position={{lat: 41.3950183, lng: 2.1977535}}
-          /> */}
-          {markers.map(marker => (
-          <Marker
-          position={{ lat: marker.lat, lng: marker.lng}}
-          />
-          ))}
-        </GoogleMap>
+
       </div>
       </form>
     </div>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import Search from './Search';
-import apiService from './../ApiService';
+import Search from '../Search/Search';
+import apiService from '../../ApiService';
 
 
 const initialState = {

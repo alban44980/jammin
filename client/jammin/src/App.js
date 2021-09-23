@@ -1,7 +1,7 @@
-import Topbar from './components/Topbar';
-import FindJam from './components/FindJam';
-import CreateJam from './components/CreateJam';
-import Home from './components/Home'
+import Topbar from './components/Topbar/Topbar';
+import FindJam from './components/FindJam/FindJam';
+import CreateJam from './components/CreateJam/CreateJam';
+import Home from './components/Home/Home'
 import './App.css';
 import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 
