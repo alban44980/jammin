@@ -3,8 +3,9 @@ const Jam = require('../Models/jams');
 exports.getJams = async (req, res) => {
   console.log('getJams function running')
   try {
-    const result =  await Jam.find();
-    res.status(200);
+    const location = req.body.location;
+    console.log(location);
+    const result =  await Jam.find({location});
     console.log(result);
     res.json(result);
   } catch (e) {
