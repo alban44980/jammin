@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Search from './Search';
 import apiService from '../ApiService';
 import {
-  GooglMap,
+  GoogleMap,
   useLoadScript,
   Marker,
   InfoWindow
@@ -19,6 +19,7 @@ function FindJam() {
 
   const [searchVal, setSearchVal] = useState({location: null});
   const [jams, setJams] = useState([]);
+  const [center, setCenter] = useState(null);
 
   function searchJams (input) {
     console.log('searchJams function running')
@@ -29,9 +30,18 @@ function FindJam() {
     e.preventDefault();
     const result = await apiService.getJams({city: searchVal});
     setJams(result)
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${searchVal}&key=AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM`)
+    .then((res) => res.json())
+    .then((data => {
+      let coords = data.results[0].geometry.location;
+      setCenter(coords)
+    }))
   }
 
-  // const{ isLoaded, load}
+  const{ isLoaded, loadError} = useLoadScript({
+    googleMapsApiKey: 'AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM',
+    libraries
+  })
 
 
   return (
@@ -48,6 +58,15 @@ function FindJam() {
           <h2>Participants: {jam.numOfParticipants}</h2>
         </div>
           ): null}
+      </div>
+      <div>
+        <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={13}
+        center={center}
+        >
+
+        </GoogleMap>
       </div>
       </form>
     </div>
