@@ -55,15 +55,7 @@ function CreateJam() {
         onChange={handleChange}
         className="event-input"
         />
-        {/* <input type="text"
-        placeholder = "Location"
-        name = "location"
-        value={state.location}
-        onChange={handleChange}
-        className="event-input"
-        /> */}
         <Search setLocation={setLocation}/>
-
         <textarea
         className="event-input"
         name="description"
