@@ -1,7 +1,8 @@
 import Topbar from './components/Topbar/Topbar';
 import FindJam from './components/FindJam/FindJam';
 import CreateJam from './components/CreateJam/CreateJam';
-import Home from './components/Home/Home'
+import Home from './components/Home/Home';
+import EventPage from './components/EventPage/EventPage'
 import './App.css';
 import Background from './images/back2.jpg'
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/' exact component={Home}/>
         <Route path='/createjam' exact component={CreateJam}/>
         <Route path='/findjam' exact component={FindJam}/>
+        <Route path='/jams/:id' exact component={EventPage}/>
       </Switch>
       {/* <div className="overlay"></div> */}
     </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import './JamItem.css'
+import {Link} from 'react-router-dom';
 
 function JamItem({jam}) {
   return (
@@ -14,7 +15,9 @@ function JamItem({jam}) {
               </div>
             </div>
             <div className="see-event">
+              <Link to={`/jams/${jam._id}`}>
               <button>SEE EVENT</button>
+              </Link>
             </div>
           </div>
     </div>
