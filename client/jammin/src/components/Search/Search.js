@@ -37,7 +37,7 @@ function Search({setCity, setLocation, searchJams}) {
 
   return (
     <Combobox onSelect={handleSelect} aria-labelledby="demo">
-      <ComboboxInput value={value} onChange={handleInput} disabled={!ready} />
+      <ComboboxInput value={value} onChange={handleInput} disabled={!ready}/>
       <ComboboxPopover>
         <ComboboxList>
           {status === "OK" &&

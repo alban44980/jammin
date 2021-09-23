@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Search from '../Search/Search';
 import apiService from '../../ApiService';
+import './findjam.css';
 import {
   GoogleMap,
   useLoadScript,

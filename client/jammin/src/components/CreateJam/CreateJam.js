@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Search from '../Search/Search';
 import apiService from '../../ApiService';
+import './createjam.css'
 
 
 const initialState = {
@@ -93,10 +94,12 @@ function CreateJam() {
         onChange={handleChange}
         className="event-input"
         />
-        <div id="test">
-        <Search setCity={setCity}/>
+        <div className="search-city">
+          <Search setCity={setCity}/>
         </div>
-        <Search setLocation={setLocation} state={state}/>
+        <div className="search-city">
+          <Search setLocation={setLocation} state={state}/>
+        </div>
         <input type="text"
         placeholder="Languages spoken ?"
         name="languages"
