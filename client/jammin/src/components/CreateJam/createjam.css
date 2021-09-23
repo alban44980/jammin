@@ -1,7 +1,7 @@
 
 .createJam-main{
-  background-color: rgb(147, 105, 245);
-  height: 80%;
+  background-color:rgba(0, 0, 0, 0.7);
+  height: 85%;
   width: 35%;
   margin: 1rem auto;
   display: flex;
@@ -11,7 +11,7 @@
 
 .createJam-main h1 {
   margin-top: 1rem;
-  color: mediumaquamarine
+  color: whitesmoke
 }
 
 .jam-form {
@@ -33,9 +33,14 @@
 .create-btn{
   margin: 1rem;
   border-radius: 20px;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   height: 2.3rem
+}
+
+.create-btn:hover{
+  background-color:black;
+  color: white
 }
 
 
