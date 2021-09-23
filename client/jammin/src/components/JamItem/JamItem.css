@@ -1,0 +1,40 @@
+.single-jam {
+  display: flex;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 10px;
+  border: 1px solid whitesmoke;
+  padding: 1rem;
+}
+
+.jam-info{
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+  width: 80%
+}
+
+.see-event {
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 1rem;
+height: 100%;
+border-radius: 10px;
+width: 20%
+}
+
+.see-event button {
+  background-color: rgba(245,245,245,0.7);
+  border-radius: 10px;
+  height: 4rem;
+  width: 8rem;
+  font-size: 1rem;
+  font-weight: bold
+}
+
+.see-event button:hover {
+  color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0.4)
+}

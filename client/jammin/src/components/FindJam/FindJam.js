@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Search from '../Search/Search';
+import JamItem from '../JamItem/JamItem';
 import apiService from '../../ApiService';
 import './findjam.css';
 import {
@@ -73,19 +74,7 @@ function FindJam() {
       <div className="jams-list-container">
         <div className="jams-list">
           {jams.length? jams.map(jam =>
-          <div className="single-jam">
-            <div className="jam-info">
-              <h1>{jam.date}</h1>
-              <h1>{jam.title}</h1>
-              <div className="jam-loc">
-                <img src="" alt=""/>
-                <p>{jam.location}</p>
-              </div>
-            </div>
-            <div className="see-event">
-              <button>SEE EVENT</button>
-            </div>
-          </div>
+            <JamItem jam={jam}/>
             ): null}
         </div>
         <div className="maps-container">
