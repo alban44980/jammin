@@ -96,9 +96,6 @@ function FindJam() {
                     zoom={13}
                     center={center}
                     >
-                      {/* <Marker
-                      position={{lat: 41.3950183, lng: 2.1977535}}
-                      /> */}
                       {markers.map(marker => (
                       <Marker
                       position={{ lat: marker.lat, lng: marker.lng}}
