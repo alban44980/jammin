@@ -55,7 +55,6 @@ function CreateJam() {
     })
   }
 
-
   function setLocation(loc) {
     console.log('setLocation function running')
 
@@ -72,9 +71,15 @@ function CreateJam() {
     }))
     })
     .catch((err) => console.log(err));
-
   }
 
+  const inputstyle = {
+    backgroundColor: 'transparent'
+  }
+
+  const inputcontainstyle = {
+    backgroundColor: 'white'
+  }
 
   return (
     <div className="createJam-main">
@@ -95,10 +100,10 @@ function CreateJam() {
         className="event-input"
         />
         <div className="search-city">
-          <Search setCity={setCity}/>
+          <Search inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setCity={setCity}/>
         </div>
         <div className="search-city">
-          <Search setLocation={setLocation} state={state}/>
+          <Search inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setLocation={setLocation} state={state}/>
         </div>
         <input type="text"
         placeholder="Languages spoken ?"

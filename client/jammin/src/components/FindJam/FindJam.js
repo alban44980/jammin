@@ -13,8 +13,9 @@ import {
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  width: "50vw",
-  height: "50vh"
+  width: "90%",
+  height: "50vh",
+  borderRadius: "10px"
 };
 
 function FindJam() {
@@ -23,7 +24,6 @@ function FindJam() {
   const [jams, setJams] = useState([]);
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
-  const [errorFail, setErrorFail] = useState("");
 
   function searchJams (input) {
     console.log('searchJams function running')

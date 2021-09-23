@@ -10,7 +10,7 @@ import {
 
 import "@reach/combobox/styles.css";
 
-function Search({setCity, setLocation, searchJams}) {
+function Search({setCity, setLocation, searchJams, inputstyle, inputcontainstyle}) {
   const {
     ready,
     value,
@@ -35,9 +35,25 @@ function Search({setCity, setLocation, searchJams}) {
     }
   };
 
+  const style = {
+    width: '80%',
+    height: '60%',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    borderRadius: '20px',
+    color: 'white',
+    padding: '1rem'
+  }
+
+  const containerStyle = {
+    height: '20%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+
   return (
-    <Combobox onSelect={handleSelect} aria-labelledby="demo">
-      <ComboboxInput value={value} onChange={handleInput} disabled={!ready}/>
+    <Combobox style={inputstyle ? inputstyle : containerStyle} onSelect={handleSelect} aria-labelledby="demo">
+      <ComboboxInput style={inputcontainstyle ? inputcontainstyle :style} value={value} onChange={handleInput} disabled={!ready}/>
       <ComboboxPopover>
         <ComboboxList>
           {status === "OK" &&
