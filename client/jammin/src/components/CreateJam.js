@@ -8,8 +8,9 @@ const initialState = {
   date: '',
   description: '',
   city: '',
+  cityCords: null,
   location: '',
-  coordinates: [],
+  locCords: null,
   host: '',
   numOfParticipants : 1,
   languages: '',
@@ -40,10 +41,17 @@ function CreateJam() {
 
   function setCity(loc) {
     console.log('setCity function running')
-    setState((previous) => ({
-      ...previous,
-      city: loc
-    }))
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${loc}&key=AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM`)
+    .then((res) => res.json())
+    .then((data)  => {
+      console.log(data.results[0].geometry.location);
+      let coords = data.results[0].geometry.location;
+      setState((previous) => ({
+            ...previous,
+            city: loc,
+            cityCords: coords
+          }))
+    })
   }
 
 
@@ -59,7 +67,7 @@ function CreateJam() {
        setState((previous) => ({
       ...previous,
       location: loc,
-      coordinates: coords
+      locCords: coords
     }))
     })
     .catch((err) => console.log(err));

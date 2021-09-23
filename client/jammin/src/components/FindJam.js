@@ -1,7 +1,19 @@
 import React, {useState} from 'react';
 import Search from './Search';
 import apiService from '../ApiService';
+import {
+  GooglMap,
+  useLoadScript,
+  Marker,
+  InfoWindow
+} from "@react-google-maps/api";
+// import { formatRelative } from "adt-fns";
 
+const libraries = ["places"];
+const mapContainerStyle = {
+  width: "50vw",
+  height: "50vh"
+};
 
 function FindJam() {
 
@@ -18,6 +30,8 @@ function FindJam() {
     const result = await apiService.getJams({city: searchVal});
     setJams(result)
   }
+
+  // const{ isLoaded, load}
 
 
   return (
