@@ -11,7 +11,10 @@
 
 .createJam-main h1 {
   margin-top: 1rem;
-  color: whitesmoke
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 
 .jam-form {
@@ -22,7 +25,7 @@
 .event-input {
   margin: 1rem;
   height: 3rem;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 0.3rem
 }
 
@@ -35,7 +38,7 @@
   border-radius: 20px;
   background-color: white;
   color: black;
-  height: 2.3rem
+  height: 3.3rem
 }
 
 .create-btn:hover{

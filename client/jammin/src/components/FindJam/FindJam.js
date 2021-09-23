@@ -22,6 +22,7 @@ function FindJam() {
   const [jams, setJams] = useState([]);
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
+  const [errorFail, setErrorFail] = useState("");
 
   function searchJams (input) {
     console.log('searchJams function running')
@@ -72,31 +73,42 @@ function FindJam() {
       <div className="jams-list-container">
         <div className="jams-list">
           {jams.length? jams.map(jam =>
-          <div>
-            <h1>{jam.title}</h1>
-            <h1>{jam.date}</h1>
-            <h2>Participants: {jam.numOfParticipants}</h2>
+          <div className="single-jam">
+            <div className="jam-info">
+              <h1>{jam.date}</h1>
+              <h1>{jam.title}</h1>
+              <div className="jam-loc">
+                <img src="" alt=""/>
+                <p>{jam.location}</p>
+              </div>
+            </div>
+            <div className="see-event">
+              <button>SEE EVENT</button>
+            </div>
           </div>
             ): null}
         </div>
         <div className="maps-container">
+          <div className="maps">
           {jams.length ?
-          <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={13}
-          center={center}
-          >
-            {/* <Marker
-            position={{lat: 41.3950183, lng: 2.1977535}}
-            /> */}
-            {markers.map(marker => (
-            <Marker
-            position={{ lat: marker.lat, lng: marker.lng}}
-            />
-            ))}
-          </GoogleMap> :
-          <h1>OOPS it seems there is no jams coming up in this city 😅</h1>
-        }
+                    <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={13}
+                    center={center}
+                    >
+                      {/* <Marker
+                      position={{lat: 41.3950183, lng: 2.1977535}}
+                      /> */}
+                      {markers.map(marker => (
+                      <Marker
+                      position={{ lat: marker.lat, lng: marker.lng}}
+                      />
+                      ))}
+                    </GoogleMap> :
+                    <h1 id="search-fail">OOPS it seems there is no jams coming up in this city 😅</h1>
+                  }
+          </div>
+
 
         </div>
 
