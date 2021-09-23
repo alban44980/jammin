@@ -4,15 +4,17 @@ import apiService from './../ApiService';
 
 
 const initialState = {
+  title: '',
   date: '',
   description: '',
+  city: '',
   location: '',
   coordinates: [],
   host: '',
-  numofParticipants : 0,
-  languages: [],
-  pastEvent: undefined,
-  comingEvent: undefined
+  numOfParticipants : 1,
+  languages: '',
+  pastEvent: false,
+  comingEvent: true
 }
 
 function CreateJam() {
@@ -36,11 +38,32 @@ function CreateJam() {
     setState(initialState)
   }
 
-  function setLocation(loc) {
+  function setCity(loc) {
+    console.log('setCity function running')
     setState((previous) => ({
       ...previous,
-      location: loc
+      city: loc
     }))
+  }
+
+
+  function setLocation(loc) {
+    console.log('setLocation function running')
+
+    //HERE WE WANNA GET THE COORDINATES FOR LOC
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${loc}&key=AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data.results[0].geometry.location);
+      let coords = data.results[0].geometry.location;
+       setState((previous) => ({
+      ...previous,
+      location: loc,
+      coordinates: coords
+    }))
+    })
+    .catch((err) => console.log(err));
+
   }
 
 
@@ -48,14 +71,29 @@ function CreateJam() {
     <div className="createJam-main">
       <form className="jam-form" id="jam-form" onSubmit={handleSubmit}>
         <h1>CREATE YOUR JAM 🥳🥳🥳 </h1>
+        <input type="text"
+        placeholder="Title"
+        name="title"
+        value={state.title}
+        onChange={handleChange}
+        className="event-input"
+        />
         <input type="date"
         placeholder = "Date"
-        name = "date"
+        name="date"
         value={state.date}
         onChange={handleChange}
         className="event-input"
         />
-        <Search setLocation={setLocation}/>
+        <Search setCity={setCity}/>
+        <Search setLocation={setLocation} state={state}/>
+        <input type="text"
+        placeholder="Languages spoken ?"
+        name="languages"
+        value={state.languages}
+        onChange={handleChange}
+        className="event-input"
+        />
         <textarea
         className="event-input"
         name="description"

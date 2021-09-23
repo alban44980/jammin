@@ -12,11 +12,11 @@ apiService.postEvent = (event) => {
     .catch((err) => console.log(err));
 }
 
-apiService.getJams = (location) => {
+apiService.getJams = (city) => {
   return fetch(`${BASE_URL}/searchjam`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(location),
+    body: JSON.stringify(city),
   })
     .then((res) => res.json())
     // .then((data) => console.log(data))

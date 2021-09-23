@@ -10,7 +10,7 @@ import {
 
 import "@reach/combobox/styles.css";
 
-function Search({setLocation, searchJams}) {
+function Search({setCity, setLocation, searchJams}) {
   const {
     ready,
     value,
@@ -24,8 +24,11 @@ function Search({setLocation, searchJams}) {
 
   const handleSelect = (val) => {
     setValue(val, false);
+    if(setCity){
+    setCity(val);
+    }
     if(setLocation){
-    setLocation(val);
+      setLocation(val)
     }
     if(searchJams){
       searchJams(val)

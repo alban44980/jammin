@@ -15,8 +15,7 @@ function FindJam() {
 
   async function handleSubmit (e) {
     e.preventDefault();
-    const result = await apiService.getJams({location: searchVal});
-    // console.log(result)
+    const result = await apiService.getJams({city: searchVal});
     setJams(result)
   }
 
@@ -30,8 +29,9 @@ function FindJam() {
       <div>
         {jams.length? jams.map(jam =>
         <div>
+          <h1>{jam.title}</h1>
           <h1>{jam.date}</h1>
-          <h2>{jam.description}</h2>
+          <h2>Participants: {jam.numOfParticipants}</h2>
         </div>
           ): null}
       </div>
