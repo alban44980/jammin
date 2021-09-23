@@ -15,7 +15,12 @@ function JamItem({jam}) {
               </div>
             </div>
             <div className="see-event">
-              <Link to={`/jams/${jam._id}`}>
+              <Link to={{
+                pathname: `/jams/${jam._id}`,
+                state: {
+                  jam: jam
+                }
+              }}>
               <button>SEE EVENT</button>
               </Link>
             </div>
