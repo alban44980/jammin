@@ -73,46 +73,64 @@ function CreateJam() {
     .catch((err) => console.log(err));
   }
 
+  const placeHolders = {
+    city: 'YOUR CITY',
+    location: "JAM LOCATION"
+  }
+
   const inputstyle = {
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '1rem',
+    height: '14%',
   }
 
   const inputcontainstyle = {
-    backgroundColor: 'white'
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    color: 'white',
+    height: '110%',
+    width: '60%',
+    margin: '0 auto',
+    borderRadius: '20px',
+    fontSize: '1.2rem',
+    padding: '0.4rem'
   }
 
   return (
     <div className="createJam-main">
-      <form className="jam-form" id="jam-form" onSubmit={handleSubmit}>
-        <h1>CREATE YOUR JAM 🥳🥳🥳 </h1>
-        <input type="text"
+      <form className="jam-form" onSubmit={handleSubmit}>
+        {/* <h1>CREATE YOUR JAM 🥳🥳🥳 </h1> */}
+        <input requireed type="text"
         placeholder="Title"
         name="title"
         value={state.title}
         onChange={handleChange}
-        className="event-input"
+        className="event-input main-inputs"
         />
-        <input type="date"
+        <input required type="date"
         placeholder = "Date"
         name="date"
         value={state.date}
         onChange={handleChange}
-        className="event-input"
+        className="event-input main-inputs"
         />
-        <div className="search-city">
-          <Search inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setCity={setCity}/>
-        </div>
-        <div className="search-city">
-          <Search inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setLocation={setLocation} state={state}/>
-        </div>
-        <input type="text"
+        {/* <div className="search-city"> */}
+          <Search required inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setCity={setCity} cityPlace={placeHolders.city}/>
+        {/* </div> */}
+        {/* <div className="search-city"> */}
+          <Search required inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setLocation={setLocation} state={state} locPlace={placeHolders.location}/>
+        {/* </div> */}
+        <input required type="text"
         placeholder="Languages spoken ?"
         name="languages"
         value={state.languages}
         onChange={handleChange}
-        className="event-input"
+        className="event-input main-inputs"
         />
         <textarea
+        required
         className="event-input"
         name="description"
         id="event-description"

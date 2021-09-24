@@ -10,7 +10,7 @@ import {
 
 import "@reach/combobox/styles.css";
 
-function Search({setCity, setLocation, searchJams, inputstyle, inputcontainstyle}) {
+function Search({setCity, setLocation, searchJams, inputstyle, inputcontainstyle, cityPlace, locPlace}) {
   const {
     ready,
     value,
@@ -53,7 +53,7 @@ function Search({setCity, setLocation, searchJams, inputstyle, inputcontainstyle
 
   return (
     <Combobox style={inputstyle ? inputstyle : containerStyle} onSelect={handleSelect} aria-labelledby="demo">
-      <ComboboxInput style={inputcontainstyle ? inputcontainstyle :style} value={value} onChange={handleInput} disabled={!ready}/>
+      <ComboboxInput style={inputcontainstyle ? inputcontainstyle :style} value={value} onChange={handleInput} disabled={!ready} placeholder={cityPlace || locPlace}/>
       <ComboboxPopover>
         <ComboboxList>
           {status === "OK" &&
