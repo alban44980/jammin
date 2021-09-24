@@ -25,6 +25,7 @@ function FindJam() {
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [error, setError] = useState('');
+  const findPlaceholder = "Enter your city";
 
   function searchJams (input) {
     console.log('searchJams function running')
@@ -73,8 +74,8 @@ function FindJam() {
   return (
     <div className="findJam-main">
       <form className="find-form" onSubmit={handleSubmit}>
-      <h1 id="find-jam">👇👇 Enter your location to find a jam in your city 👇👇</h1>
-      <Search searchJams={searchJams}/>
+      {/* <h1 id="find-jam">👇👇 Enter your location to find a jam in your city 👇👇</h1> */}
+      <Search searchJams={searchJams} findPlaceholder={findPlaceholder}/>
       <button className="find-btn">Search</button>
       <div className="jams-list-container">
         <div className="jams-list">
@@ -109,6 +110,7 @@ function FindJam() {
     </div>
   )
 }
+
 
 
 export default FindJam

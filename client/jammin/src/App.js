@@ -1,6 +1,6 @@
 import Topbar from './components/Topbar/Topbar';
 import FindJam from './components/FindJam/FindJam';
-import CreateJam from './components/CreateJam/CreateJam';
+import CreateJam from './components/CreateJam/CreateJam.jsx';
 import Home from './components/Home/Home';
 import EventPage from './components/EventPage/EventPage'
 import './App.css';

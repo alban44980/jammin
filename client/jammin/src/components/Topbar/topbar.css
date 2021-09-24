@@ -5,6 +5,7 @@
   height: 7vh;
   display: flex;
   list-style-type: none;
+  /* background-color: rgba(0, 0, 0, 0.7); */
 }
 
 .nav-container {

@@ -16,7 +16,8 @@ const initialState = {
   numOfParticipants : 1,
   languages: '',
   pastEvent: false,
-  comingEvent: true
+  comingEvent: true,
+  messages: []
 }
 
 function CreateJam() {
@@ -51,7 +52,7 @@ function CreateJam() {
             ...previous,
             city: loc,
             cityCords: coords
-          }))
+      }))
     })
   }
 
@@ -95,35 +96,36 @@ function CreateJam() {
     margin: '0 auto',
     borderRadius: '20px',
     fontSize: '1.2rem',
-    padding: '0.4rem'
+    padding: '0.4rem',
+    // textAlign: 'center'
   }
 
   return (
     <div className="createJam-main">
       <form className="jam-form" onSubmit={handleSubmit}>
         {/* <h1>CREATE YOUR JAM 🥳🥳🥳 </h1> */}
-        <input requireed type="text"
-        placeholder="Title"
+        <input required type="text"
+        placeholder="TITLE"
         name="title"
         value={state.title}
         onChange={handleChange}
         className="event-input main-inputs"
         />
         <input required type="date"
-        placeholder = "Date"
+        placeholder = "DATE"
         name="date"
         value={state.date}
         onChange={handleChange}
         className="event-input main-inputs"
         />
         {/* <div className="search-city"> */}
-          <Search required inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setCity={setCity} cityPlace={placeHolders.city}/>
+          <Search inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setCity={setCity} cityPlace={placeHolders.city}/>
         {/* </div> */}
         {/* <div className="search-city"> */}
-          <Search required inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setLocation={setLocation} state={state} locPlace={placeHolders.location}/>
+          <Search inputstyle={inputstyle} inputcontainstyle={inputcontainstyle} setLocation={setLocation} state={state} locPlace={placeHolders.location}/>
         {/* </div> */}
         <input required type="text"
-        placeholder="Languages spoken ?"
+        placeholder="LNGUAGES SPOKEN ?"
         name="languages"
         value={state.languages}
         onChange={handleChange}
