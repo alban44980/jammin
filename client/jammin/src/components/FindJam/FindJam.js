@@ -87,7 +87,7 @@ function FindJam() {
           {jams.length ?
                     <GoogleMap
                     mapContainerStyle={mapContainerStyle}
-                    zoom={13}
+                    zoom={11}
                     center={center}
                     >
                       {markers.map(marker => (
@@ -99,8 +99,6 @@ function FindJam() {
                     <h1 id="search-fail">{error}</h1>
                   }
           </div>
-
-
         </div>
 
       </div>
