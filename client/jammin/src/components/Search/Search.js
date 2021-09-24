@@ -41,7 +41,8 @@ function Search({setCity, setLocation, searchJams, inputstyle, inputcontainstyle
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
     borderRadius: '20px',
     color: 'white',
-    padding: '1rem'
+    padding: '1rem',
+    textAlign: 'center'
   }
 
   const containerStyle = {

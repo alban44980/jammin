@@ -7,20 +7,20 @@
   display: flex;
 }
 
-.event-data{
+.event-data {
   /* background-color: green; */
   width: 65%;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
 
 .data-item {
   /* margin: 1rem */
-  padding: 1rem
+  padding: 1rem;
 }
 
 #date {
-  font-size: 2rem
+  font-size: 2rem;
 }
 
 #title {
@@ -29,13 +29,12 @@
 }
 #location {
   border-bottom: 1px solid white;
-  padding-bottom: 2rem
+  padding-bottom: 2rem;
 }
 #description {
   margin: 2rem 4rem;
-  font-size: 1.5rem
+  font-size: 1.5rem;
 }
-
 
 .socialmap {
   display: flex;
@@ -50,11 +49,4 @@
   align-items: center;
   justify-content: center;
   border: 1px solid white;
-}
-
-.social-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 65%;
 }
