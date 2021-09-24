@@ -26,8 +26,8 @@ function FindJam() {
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [selectedCoords, setSelectedCoords] = useState(null); //state for the coordinates of the selected element
-  const [idSelected, setIdSelected] = useState(null);
+  // const [selectedCoords, setSelectedCoords] = useState(null); //state for the coordinates of the selected element
+  // const [idSelected, setIdSelected] = useState(null);
   const [idRoute, setIdRoute] = useState(null);
 
   const [error, setError] = useState('');
@@ -116,10 +116,10 @@ function FindJam() {
                     <Marker
                       onClick={() => {
                         setSelected(marker);
-                        setSelectedCoords({
-                          lat: marker.lat,
-                          lng: marker.lng,
-                        });
+                        // setSelectedCoords({
+                        //   lat: marker.lat,
+                        //   lng: marker.lng,
+                        // });
                         const routeId = coordsToId({
                           lat: marker.lat,
                           lng: marker.lng,
@@ -143,7 +143,8 @@ function FindJam() {
                       }}
                     >
                       <Link to={`/jams/${idRoute}`}>
-                        <button>See Event</button>
+                        <button className="btn-see-event">SEE EVENT</button>
+                        <div className="map-window"></div>
                       </Link>
                     </InfoWindow>
                   ) : null}
