@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './social.css';
+import apiService from '../../ApiService';
 
-const initialState = {
-  name: '',
-  message: '',
-};
+// const initialState = {
+//   name: '',
+//   message: '',
+// };
 
-function Social() {
-  const [msg, setMsg] = useState(initialState); //message state
+function Social({ jam, msg, setMsg, initialState }) {
+  // const [msg, setMsg] = useState(initialState); //message state
+  // const [msgList, setMsgList] = useState(null);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -17,17 +19,22 @@ function Social() {
     }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log('form submitted');
-    console.log(msg);
-    //postmessage;
+    const result = await apiService.postMessage(msg, jam._id);
     setMsg(initialState);
   }
 
   return (
     <div className="social-container">
-      <div className="msg-container"></div>
+      <div className="msg-container">
+        {jam.messages.map((msg) => (
+          <div className="msg-indiv">
+            <p className="msg-name">{msg.name}</p>
+            <p className="msg-message">{msg.message}</p>
+          </div>
+        ))}
+      </div>
       <div className="form-container">
         <form className="social-form" onSubmit={handleSubmit}>
           <div className="left-form">
