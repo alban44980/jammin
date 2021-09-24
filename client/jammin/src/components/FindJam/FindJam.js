@@ -9,6 +9,8 @@ import {
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
+import { Link } from 'react-router-dom';
+
 // import { formatRelative } from "adt-fns";
 
 const libraries = ['places'];
@@ -23,6 +25,11 @@ function FindJam() {
   const [jams, setJams] = useState([]);
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
+  const [selectedCoords, setSelectedCoords] = useState(null); //state for the coordinates of the selected element
+  const [idSelected, setIdSelected] = useState(null);
+  const [idRoute, setIdRoute] = useState(null);
+
   const [error, setError] = useState('');
   const findPlaceholder = 'Enter your city';
 
@@ -64,6 +71,21 @@ function FindJam() {
       });
   }
 
+  function coordsToId(coords) {
+    console.log(jams);
+
+    console.log(coords);
+    for (let i = 0; i < jams.length; i++) {
+      // console.log(jams[i].locCords.lat);
+      if (
+        jams[i].locCords.lat === coords.lat &&
+        jams[i].locCords.lng === coords.lng
+      ) {
+        return jams[i]._id;
+      }
+    }
+  }
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM',
     libraries,
@@ -91,8 +113,40 @@ function FindJam() {
                   center={center}
                 >
                   {markers.map((marker) => (
-                    <Marker position={{ lat: marker.lat, lng: marker.lng }} />
+                    <Marker
+                      onClick={() => {
+                        setSelected(marker);
+                        setSelectedCoords({
+                          lat: marker.lat,
+                          lng: marker.lng,
+                        });
+                        const routeId = coordsToId({
+                          lat: marker.lat,
+                          lng: marker.lng,
+                        });
+                        setIdRoute(routeId);
+                        //GIVEN THOSE COORDS SET THE STATE FOR THE ID
+                      }}
+                      position={{ lat: marker.lat, lng: marker.lng }}
+                      size="200px"
+                    />
                   ))}
+
+                  {selected ? (
+                    <InfoWindow
+                      position={{
+                        lat: selected.lat,
+                        lng: selected.lng,
+                      }}
+                      onCloseClick={() => {
+                        setSelected(null);
+                      }}
+                    >
+                      <Link to={`/jams/${idRoute}`}>
+                        <button>See Event</button>
+                      </Link>
+                    </InfoWindow>
+                  ) : null}
                 </GoogleMap>
               ) : (
                 <h1 id="search-fail">{error}</h1>
@@ -107,3 +161,7 @@ function FindJam() {
 }
 
 export default FindJam;
+
+//style
+
+//options for hover
