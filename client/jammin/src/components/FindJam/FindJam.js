@@ -20,14 +20,15 @@ const mapContainerStyle = {
   borderRadius: '10px',
 };
 
-function FindJam() {
+function FindJam(props) {
+  console.log(props);
+  // const jams = props.location.state.jams;
+  // const setJams = props.location.state.setJams;
   const [searchVal, setSearchVal] = useState({ location: null });
   const [jams, setJams] = useState([]);
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-  // const [selectedCoords, setSelectedCoords] = useState(null); //state for the coordinates of the selected element
-  // const [idSelected, setIdSelected] = useState(null);
   const [idRoute, setIdRoute] = useState(null);
 
   const [error, setError] = useState('');

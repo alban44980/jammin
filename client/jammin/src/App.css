@@ -1,14 +1,35 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
-.App{
+.App {
+  /* width: 100vw; */
+  background-image: url('./images/back2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  animation: zoomIn 5s;
+  animation-fill-mode: forwards;
+}
+
+.app-container {
   width: 100vw;
   height: 100vh;
-  background-image: url('https://unsplash.com/photos/IiwYeihxC58');
 }
+
+@keyframes zoomIn {
+  0% {
+    width: 100vw;
+    height: 100vh;
+  }
+  100% {
+    width: 108vw;
+    height: 100vh;
+  }
+}
+
 /*
 .overlay{
   position: absolute;
