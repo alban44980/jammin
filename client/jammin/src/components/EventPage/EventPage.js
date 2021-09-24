@@ -9,15 +9,14 @@ import {
 } from '@react-google-maps/api';
 import apiService from '../../ApiService';
 
-const pathname = window.location.pathname;
-const urlID = pathname.slice(6);
-
 const initialState = {
   name: '',
   message: '',
 };
 
 function EventPage(props) {
+  const pathname = window.location.pathname;
+  const urlID = pathname.slice(6);
   //initial state => from props || create another object for  initial
   const [data, setData] = useState(props.location?.state?.jam);
   const [msg, setMsg] = useState(initialState); //message state
