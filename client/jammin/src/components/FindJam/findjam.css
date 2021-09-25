@@ -89,12 +89,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  width: 40vw;
+  left: 400px;
 }
 
 #search-fail {
   /* background-color: red; */
-  color: rgba(255, 9, 9, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   width: 80%;
+  text-align: center;
 }
 
 #btn-fail {
@@ -102,8 +106,14 @@
   padding: 0.5rem;
   color: white;
   border-radius: 20px;
-  width: 80%;
-  height: 50%;
+  width: 30vw;
+  height: 10vh;
+  margin-top: 2rem;
+  font-size: 2.5rem;
+}
+
+#btn-fail:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 @keyframes fadeIn {
