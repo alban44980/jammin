@@ -20,9 +20,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   const [jams, setJams] = useState([]);
-  const [searchVal, setSearchVal] = useState({ location: null });
+  const [searchVal, setSearchVal] = useState('');
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
+
+  const [hasSearch, setHasSearch] = useState(false);
 
   useEffect(() => {
     setJams([]);
@@ -38,7 +40,12 @@ function App() {
               path="/"
               exact
               render={(props) => (
-                <Home {...props} jams={jams} setJams={setJams} />
+                <Home
+                  {...props}
+                  jams={jams}
+                  setJams={setJams}
+                  setHasSearch={setHasSearch}
+                />
               )}
               // component={Home}
             />
@@ -57,6 +64,8 @@ function App() {
                   setCenter={setCenter}
                   markers={markers}
                   setMarkers={setMarkers}
+                  hasSearch={hasSearch}
+                  setHasSearch={setHasSearch}
                 />
               )}
               // component={FindJam}

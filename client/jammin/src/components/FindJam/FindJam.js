@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Search from '../Search/Search';
 import JamItem from '../JamItem/JamItem';
 import apiService from '../../ApiService';
+import logo from '../../images/marker.png';
 import './findjam.css';
 import {
   GoogleMap,
@@ -30,10 +31,15 @@ function FindJam(props) {
   // const [markers, setMarkers] = useState([]);
   const markers = props.markers;
   const setMarkers = props.setMarkers;
+
+  const hasSearch = props.hasSearch;
+  const setHasSearch = props.setHasSearch;
+
   const [selected, setSelected] = useState(null);
   const [idRoute, setIdRoute] = useState(null);
+  const [highEvent, setHighEvent] = useState(null);
 
-  const [error, setError] = useState('');
+  // const [error, setError] = useState(null);
   const findPlaceholder = 'Enter your city';
 
   function searchJams(input) {
@@ -51,11 +57,13 @@ function FindJam(props) {
   async function handleSubmit(e) {
     e.preventDefault();
     const result = await apiService.getJams({ city: searchVal });
-    if (!result.length) {
-      setError('OOPS it seems there is no jams coming up in this city 😅');
-    } else {
-      setError('');
-    }
+    setHasSearch(true);
+    // if (!result.length) {
+    //   setError(true);
+    // } else {
+    //   setError(false);
+    // }
+
     setJams(result);
     console.log(result);
     let eventsCoords = getCoords(result);
@@ -97,12 +105,19 @@ function FindJam(props) {
   return (
     <div className="findJam-main">
       <form className="find-form" onSubmit={handleSubmit}>
-        {/* <h1 id="find-jam">👇👇 Enter your location to find a jam in your city 👇👇</h1> */}
         <Search searchJams={searchJams} findPlaceholder={findPlaceholder} />
         <button className="find-btn">Search</button>
         <div className="jams-list-container">
           <div className="jams-list">
-            {jams.length ? jams.map((jam) => <JamItem jam={jam} />) : null}
+            {jams.length
+              ? jams.map((jam) => (
+                  <JamItem
+                    jam={jam}
+                    highEvent={highEvent}
+                    setHighEvent={setHighEvent}
+                  />
+                ))
+              : null}
           </div>
           <div className="maps-container">
             <div className="maps">
@@ -115,20 +130,23 @@ function FindJam(props) {
                   {markers.map((marker) => (
                     <Marker
                       onClick={() => {
+                        console.log('this is the marker: ', marker);
                         setSelected(marker);
-                        // setSelectedCoords({
-                        //   lat: marker.lat,
-                        //   lng: marker.lng,
-                        // });
                         const routeId = coordsToId({
                           lat: marker.lat,
                           lng: marker.lng,
                         });
                         setIdRoute(routeId);
-                        //GIVEN THOSE COORDS SET THE STATE FOR THE ID
                       }}
                       position={{ lat: marker.lat, lng: marker.lng }}
-                      size="200px"
+                      icon={{
+                        url: logo,
+                        scaledSize: new window.google.maps.Size(40, 40),
+                        // marker.lat === highEvent.lat &&
+                        // marker.lng === highEvent.lng
+                        //   ? new window.google.maps.Size(50, 50)
+                        //   : new window.google.maps.Size(40, 40),
+                      }}
                     />
                   ))}
 
@@ -149,13 +167,22 @@ function FindJam(props) {
                     </InfoWindow>
                   ) : null}
                 </GoogleMap>
-              ) : (
-                <h1 id="search-fail">{error}</h1>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
-        <div></div>
+        <div>
+          {jams.length === 0 && hasSearch ? (
+            <div className="msg-fail">
+              <h1 id="search-fail">
+                OOPS it seems there is no jams coming up in this city 😅
+              </h1>
+              <Link to="/createjam">
+                <button id="btn-fail">Create a jam</button>
+              </Link>
+            </div>
+          ) : null}
+        </div>
       </form>
     </div>
   );

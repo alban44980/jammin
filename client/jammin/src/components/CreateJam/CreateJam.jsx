@@ -4,6 +4,8 @@ import apiService from '../../ApiService';
 import './createjam.css';
 import { useHistory } from 'react-router-dom';
 
+const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
 const initialState = {
   title: '',
   date: '',
@@ -47,11 +49,12 @@ function CreateJam() {
   function setCity(loc) {
     console.log('setCity function running');
     fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${loc}&key=AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM`
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${loc}&key=${apiKey}`
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results[0].geometry.location);
+        console.log(data);
+        // console.log(data.results[0].geometry.location);
         let coords = data.results[0].geometry.location;
         setState((previous) => ({
           ...previous,
@@ -66,7 +69,7 @@ function CreateJam() {
 
     //HERE WE WANNA GET THE COORDINATES FOR LOC
     fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${loc}&key=AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM`
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${loc}&key=${apiKey}`
     )
       .then((res) => res.json())
       .then((data) => {

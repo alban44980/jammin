@@ -11,9 +11,11 @@ function Home(props) {
   // console.log('FindJam props : ', props);
   // const jams = props.jams;
   const setJams = props.setJams;
+  const setHasSearch = props.setHasSearch;
 
   useEffect(() => {
     setJams([]);
+    setHasSearch(false);
   }, []);
 
   return (

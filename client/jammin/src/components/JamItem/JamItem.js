@@ -3,9 +3,17 @@ import './JamItem.css';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-function JamItem({ jam }) {
+function JamItem({ jam, highEvent, setHighEvent }) {
   return (
-    <div>
+    <div
+      onMouseEnter={() => {
+        console.log('jamCoords : ', jam.locCords);
+        setHighEvent(jam.locCords);
+      }}
+      onMouseLeave={() => {
+        setHighEvent(null);
+      }}
+    >
       <div className="single-jam">
         <div className="jam-info">
           <h1>{moment(jam.date).format('MMM Do, h:mm a')}</h1>
