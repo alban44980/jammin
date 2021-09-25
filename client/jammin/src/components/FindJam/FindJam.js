@@ -21,9 +21,15 @@ const mapContainerStyle = {
 function FindJam(props) {
   const jams = props.jams;
   const setJams = props.setJams;
-  const [searchVal, setSearchVal] = useState({ location: null });
-  const [center, setCenter] = useState(null);
-  const [markers, setMarkers] = useState([]);
+  // const [searchVal, setSearchVal] = useState({ location: null });
+  const searchVal = props.searchVal;
+  const setSearchVal = props.setSearchVal;
+  // const [center, setCenter] = useState(null);
+  const center = props.center;
+  const setCenter = props.setCenter;
+  // const [markers, setMarkers] = useState([]);
+  const markers = props.markers;
+  const setMarkers = props.setMarkers;
   const [selected, setSelected] = useState(null);
   const [idRoute, setIdRoute] = useState(null);
 
