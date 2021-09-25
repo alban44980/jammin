@@ -1,13 +1,14 @@
 import React from 'react';
 import './JamItem.css';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 function JamItem({ jam }) {
   return (
     <div>
       <div className="single-jam">
         <div className="jam-info">
-          <h1>{jam.date}</h1>
+          <h1>{moment(jam.date).format('MMM Do YY')}</h1>
           <h1>{jam.title}</h1>
           <div className="jam-loc">
             <img src="" alt="" />

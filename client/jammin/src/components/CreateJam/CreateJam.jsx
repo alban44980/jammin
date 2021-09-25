@@ -117,7 +117,7 @@ function CreateJam() {
         />
         <input
           required
-          type="date"
+          type="datetime-local"
           placeholder="DATE"
           name="date"
           value={state.date}
