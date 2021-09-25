@@ -14,8 +14,8 @@ import { Link } from 'react-router-dom';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: '90%',
-  height: '50vh',
+  width: '100%',
+  height: '60vh',
   borderRadius: '10px',
 };
 
@@ -65,7 +65,6 @@ function FindJam(props) {
     // }
 
     setJams(result);
-    console.log(result);
     let eventsCoords = getCoords(result);
     setMarkers(eventsCoords);
     //get coordinates of every element of the array results
@@ -81,10 +80,7 @@ function FindJam(props) {
   }
 
   function coordsToId(coords) {
-    console.log(jams);
-    console.log(coords);
     for (let i = 0; i < jams.length; i++) {
-      // console.log(jams[i].locCords.lat);
       if (
         jams[i].locCords.lat === coords.lat &&
         jams[i].locCords.lng === coords.lng
@@ -107,83 +103,82 @@ function FindJam(props) {
       <form className="find-form" onSubmit={handleSubmit}>
         <Search searchJams={searchJams} findPlaceholder={findPlaceholder} />
         <button className="find-btn">Search</button>
-        <div className="jams-list-container">
-          <div className="jams-list">
-            {jams.length
-              ? jams.map((jam) => (
-                  <JamItem
-                    jam={jam}
-                    highEvent={highEvent}
-                    setHighEvent={setHighEvent}
-                  />
-                ))
-              : null}
-          </div>
-          <div className="maps-container">
-            <div className="maps">
-              {jams.length ? (
-                <GoogleMap
-                  mapContainerStyle={mapContainerStyle}
-                  zoom={11}
-                  center={center}
-                >
-                  {markers.map((marker) => (
-                    <Marker
-                      onClick={() => {
-                        console.log('this is the marker: ', marker);
-                        setSelected(marker);
-                        const routeId = coordsToId({
-                          lat: marker.lat,
-                          lng: marker.lng,
-                        });
-                        setIdRoute(routeId);
-                      }}
-                      position={{ lat: marker.lat, lng: marker.lng }}
-                      icon={{
-                        url: logo,
-                        scaledSize: new window.google.maps.Size(40, 40),
-                        // marker.lat === highEvent.lat &&
-                        // marker.lng === highEvent.lng
-                        //   ? new window.google.maps.Size(50, 50)
-                        //   : new window.google.maps.Size(40, 40),
-                      }}
-                    />
-                  ))}
-
-                  {selected ? (
-                    <InfoWindow
-                      position={{
-                        lat: selected.lat,
-                        lng: selected.lng,
-                      }}
-                      onCloseClick={() => {
-                        setSelected(null);
-                      }}
-                    >
-                      <Link to={`/jams/${idRoute}`}>
-                        <button className="btn-see-event">SEE EVENT</button>
-                        <div className="map-window"></div>
-                      </Link>
-                    </InfoWindow>
-                  ) : null}
-                </GoogleMap>
-              ) : null}
-            </div>
-          </div>
-        </div>
-        <div>
-          {jams.length === 0 && hasSearch ? (
-            <div className="msg-fail">
-              <h1 id="search-fail">
-                OOPS it seems there is no jams coming up in this city 😅
-              </h1>
-              <Link to="/createjam">
-                <button id="btn-fail">Create a jam</button>
-              </Link>
-            </div>
-          ) : null}
-        </div>
       </form>
+      <div className="jams-list-container">
+        <div className="jams-list">
+          {jams.length
+            ? jams.map((jam) => (
+                <JamItem
+                  jam={jam}
+                  highEvent={highEvent}
+                  setHighEvent={setHighEvent}
+                />
+              ))
+            : null}
+        </div>
+        <div className="maps-container">
+          <div className="maps">
+            {jams.length ? (
+              <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                zoom={11}
+                center={center}
+              >
+                {markers.map((marker) => (
+                  <Marker
+                    onClick={() => {
+                      setSelected(marker);
+                      const routeId = coordsToId({
+                        lat: marker.lat,
+                        lng: marker.lng,
+                      });
+                      setIdRoute(routeId);
+                    }}
+                    position={{ lat: marker.lat, lng: marker.lng + 0.0034 }}
+                    icon={{
+                      url: logo,
+                      scaledSize:
+                        marker.lat === highEvent?.lat &&
+                        marker.lng === highEvent?.lng
+                          ? new window.google.maps.Size(50, 50)
+                          : new window.google.maps.Size(40, 40),
+                    }}
+                  />
+                ))}
+
+                {selected ? (
+                  <InfoWindow
+                    position={{
+                      lat: selected.lat,
+                      lng: selected.lng,
+                    }}
+                    onCloseClick={() => {
+                      setSelected(null);
+                    }}
+                  >
+                    <Link to={`/jams/${idRoute}`}>
+                      <button className="btn-see-event">SEE EVENT</button>
+                      <div className="map-window"></div>
+                    </Link>
+                  </InfoWindow>
+                ) : null}
+              </GoogleMap>
+            ) : null}
+          </div>
+        </div>
+      </div>
+      <div className="error-container">
+        {jams.length === 0 && hasSearch ? (
+          <div className="msg-fail">
+            <h1 id="search-fail">
+              OOPS it seems there is no jams coming up in this city 😅
+            </h1>
+            <Link to="/createjam">
+              <button id="btn-fail">Create a jam</button>
+            </Link>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

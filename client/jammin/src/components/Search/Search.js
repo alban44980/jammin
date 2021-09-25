@@ -1,16 +1,25 @@
 import React from 'react';
-import usePlacesAutocomplete from "use-places-autocomplete";
+import usePlacesAutocomplete from 'use-places-autocomplete';
 import {
   Combobox,
   ComboboxInput,
   ComboboxPopover,
   ComboboxList,
   ComboboxOption,
-} from "@reach/combobox";
+} from '@reach/combobox';
 
-import "@reach/combobox/styles.css";
+import '@reach/combobox/styles.css';
 
-function Search({setCity, setLocation, searchJams, inputstyle, inputcontainstyle, cityPlace, locPlace, findPlaceholder}) {
+function Search({
+  setCity,
+  setLocation,
+  searchJams,
+  inputstyle,
+  inputcontainstyle,
+  cityPlace,
+  locPlace,
+  findPlaceholder,
+}) {
   const {
     ready,
     value,
@@ -24,40 +33,51 @@ function Search({setCity, setLocation, searchJams, inputstyle, inputcontainstyle
 
   const handleSelect = (val) => {
     setValue(val, false);
-    if(setCity){
-    setCity(val);
+    if (setCity) {
+      setCity(val);
     }
-    if(setLocation){
-      setLocation(val)
+    if (setLocation) {
+      setLocation(val);
     }
-    if(searchJams){
-      searchJams(val)
+    if (searchJams) {
+      searchJams(val);
     }
   };
 
   const style = {
-    width: '80%',
-    height: '60%',
+    width: '100%',
+    height: '80%',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
     borderRadius: '20px',
     color: 'white',
     padding: '1rem',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  };
 
   const containerStyle = {
-    height: '20%',
+    height: '50%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  };
 
   return (
-    <Combobox style={inputstyle ? inputstyle : containerStyle} onSelect={handleSelect} aria-labelledby="demo">
-      <ComboboxInput required style={inputcontainstyle ? inputcontainstyle :style} value={value} onChange={handleInput} disabled={!ready} placeholder={cityPlace || locPlace || findPlaceholder}/>
+    <Combobox
+      style={inputstyle ? inputstyle : containerStyle}
+      onSelect={handleSelect}
+      aria-labelledby="demo"
+    >
+      <ComboboxInput
+        required
+        style={inputcontainstyle ? inputcontainstyle : style}
+        value={value}
+        onChange={handleInput}
+        disabled={!ready}
+        placeholder={cityPlace || locPlace || findPlaceholder}
+      />
       <ComboboxPopover>
         <ComboboxList>
-          {status === "OK" &&
+          {status === 'OK' &&
             data.map(({ place_id, description }) => (
               <ComboboxOption key={place_id} value={description} />
             ))}
@@ -67,7 +87,7 @@ function Search({setCity, setLocation, searchJams, inputstyle, inputcontainstyle
   );
 }
 
-export default Search
+export default Search;
 
 //   const {ready, value, suggestions: {status, data}, setValue, clearSuggestion} = usePlacesAutocomplete({
 //     requestOptions: {
