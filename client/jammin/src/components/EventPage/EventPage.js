@@ -8,6 +8,7 @@ import {
   InfoWindow,
 } from '@react-google-maps/api';
 import apiService from '../../ApiService';
+import moment from 'moment';
 
 const initialState = {
   name: '',
@@ -56,7 +57,7 @@ function EventPage(props) {
         <>
           <div className="event-data">
             <h2 className="data-item" id="date">
-              {data.date}
+              {moment(data.date).format('MMM Do, h:mm a')}
             </h2>
             <h1 className="data-item" id="title">
               {data.title}

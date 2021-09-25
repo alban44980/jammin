@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Search from '../Search/Search';
 import apiService from '../../ApiService';
 import './createjam.css';
+import { Redirect } from 'react-router-dom';
 
 const initialState = {
   title: '',
@@ -37,6 +38,7 @@ function CreateJam() {
     console.log('form submitted');
     apiService.postEvent(state);
     setState(initialState);
+    return <Redirect to="/" />;
   }
 
   function setCity(loc) {

@@ -8,7 +8,7 @@ function JamItem({ jam }) {
     <div>
       <div className="single-jam">
         <div className="jam-info">
-          <h1>{moment(jam.date).format('MMM Do YY')}</h1>
+          <h1>{moment(jam.date).format('MMM Do, h:mm a')}</h1>
           <h1>{jam.title}</h1>
           <div className="jam-loc">
             <img src="" alt="" />
