@@ -3,6 +3,10 @@ const mongoose = require('./');
 const Schema = mongoose.Schema;
 
 const jamSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
   date: {
     type: String,
     required: true
@@ -11,12 +15,19 @@ const jamSchema = new Schema({
     type: String,
     required: true
   },
+  city: {
+    type: String,
+    required: true
+  },
+  cityCords:{
+    type: Object
+  },
   location: {
     type: String,
     required: true
   },
-  coordinates: {
-    type: Array,
+  locCords: {
+    type: Object,
   },
   host: {
     type: String,
@@ -25,13 +36,16 @@ const jamSchema = new Schema({
     type: Number
   },
   languages: {
-    type: Array,
+    type: String,
   },
   pastEvent: {
     type: Boolean
   },
   comingEvent: {
     type: Boolean
+  },
+  messages: {
+    type: Array
   }
 });
 
