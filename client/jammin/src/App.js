@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import EventPage from './components/EventPage/EventPage';
 import './App.css';
 import Background from './images/back2.jpg';
+import React, { useState, useEffect } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -18,19 +19,45 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // };
 
 function App() {
+  const [jams, setJams] = useState([]);
+
+  useEffect(() => {
+    setJams([]);
+  }, []);
+
   return (
     <Router>
       <div className="App">
         <div className="app-container">
           <Topbar />
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route
+              path="/"
+              exact
+              render={(props) => (
+                <Home {...props} jams={jams} setJams={setJams} />
+              )}
+              // component={Home}
+            />
             <Route path="/createjam" exact component={CreateJam} />
-            <Route path="/findjam" exact component={FindJam} />
+            <Route
+              path="/findjam"
+              exact
+              render={(props) => (
+                <FindJam {...props} jams={jams} setJams={setJams} />
+              )}
+              // component={FindJam}
+            />
             <Route path="/jams/:id" exact component={EventPage} />
           </Switch>
         </div>
-
+        {/* <Route
+          path="'/findjam"
+          render={(props) => (
+            <FindJam {...props} jams={jams} setJams={setJams} />
+          )}
+        /> */}
+        {/* render={(props) => <FindJam {...props} jams={jams} setJams={setJams} />} */}
         {/* <div className="overlay"></div> */}
       </div>
     </Router>

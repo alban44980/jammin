@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import './home.css';
 // import FindJam from './FindJam';
 // import CreateJam from './CreateJam';
-// import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-function Home() {
-  const [jams, setJams] = useState([]);
+function Home(props) {
+  // const [jams, setJams] = useState([]);
+
+  console.log('FindJam props : ', props);
+  const jams = props.jams;
+  const setJams = props.setJams;
 
   useEffect(() => {
     setJams([]);
@@ -25,10 +29,6 @@ function Home() {
         <Link
           to={{
             pathname: '/findjam',
-            // state: {
-            //   jams: jams,
-            //   setJams: setJams,
-            // },
           }}
         >
           <button className="home-btn">FIND A JAM</button>

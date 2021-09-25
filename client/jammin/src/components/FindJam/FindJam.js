@@ -21,11 +21,10 @@ const mapContainerStyle = {
 };
 
 function FindJam(props) {
-  console.log(props);
-  // const jams = props.location.state.jams;
-  // const setJams = props.location.state.setJams;
+  console.log('FindJam props : ', props);
+  const jams = props.jams;
+  const setJams = props.setJams;
   const [searchVal, setSearchVal] = useState({ location: null });
-  const [jams, setJams] = useState([]);
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
@@ -44,7 +43,6 @@ function FindJam(props) {
     for (let i = 0; i < input.length; i++) {
       result.push(input[i].locCords);
     }
-    console.log(result);
     return result;
   }
 
