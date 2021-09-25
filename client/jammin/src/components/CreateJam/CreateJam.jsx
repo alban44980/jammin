@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Search from '../Search/Search';
 import apiService from '../../ApiService';
 import './createjam.css';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const initialState = {
   title: '',
@@ -22,6 +22,8 @@ const initialState = {
 
 function CreateJam() {
   const [state, setState] = useState(initialState);
+  //
+  const history = useHistory();
   //use this setState to upade  the location
 
   function handleChange(e) {
@@ -33,12 +35,13 @@ function CreateJam() {
     }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log('form submitted');
-    apiService.postEvent(state);
+    const event = await apiService.postEvent(state); //make the function return the event, await that
+    console.log('event data back from API ', event);
+    const id = event._id;
     setState(initialState);
-    return <Redirect to="/" />;
+    history.push(`/jams/${id}`); //path with id
   }
 
   function setCity(loc) {

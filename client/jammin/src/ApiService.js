@@ -3,7 +3,7 @@ const BASE_URL = 'http://localhost:3001';
 const apiService = {};
 
 apiService.postEvent = (event) => {
-  fetch(`${BASE_URL}/jams`, {
+  return fetch(`${BASE_URL}/jams`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(event),
