@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 function Home(props) {
   // const [jams, setJams] = useState([]);
 
-  console.log('FindJam props : ', props);
-  const jams = props.jams;
+  // console.log('FindJam props : ', props);
+  // const jams = props.jams;
   const setJams = props.setJams;
 
   useEffect(() => {

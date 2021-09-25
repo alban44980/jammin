@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Search from '../Search/Search';
 import JamItem from '../JamItem/JamItem';
 import apiService from '../../ApiService';
@@ -11,8 +11,6 @@ import {
 } from '@react-google-maps/api';
 import { Link } from 'react-router-dom';
 
-// import { formatRelative } from "adt-fns";
-
 const libraries = ['places'];
 const mapContainerStyle = {
   width: '90%',
@@ -21,7 +19,6 @@ const mapContainerStyle = {
 };
 
 function FindJam(props) {
-  console.log('FindJam props : ', props);
   const jams = props.jams;
   const setJams = props.setJams;
   const [searchVal, setSearchVal] = useState({ location: null });
@@ -34,7 +31,6 @@ function FindJam(props) {
   const findPlaceholder = 'Enter your city';
 
   function searchJams(input) {
-    console.log('searchJams function running');
     setSearchVal(input);
   }
 
@@ -72,7 +68,6 @@ function FindJam(props) {
 
   function coordsToId(coords) {
     console.log(jams);
-
     console.log(coords);
     for (let i = 0; i < jams.length; i++) {
       // console.log(jams[i].locCords.lat);
