@@ -47,4 +47,29 @@ apiService.getEvent = (id) => {
   );
 };
 
+//service for user
+
+apiService.login = (user) => {
+  return fetch(`${BASE_URL}/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(user),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
+apiService.createUser = (user) => {
+  return (
+    fetch(`${BASE_URL}/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      // .then((data) => console.log(data))
+      .catch((err) => console.log(err))
+  );
+};
+
 export default apiService;
