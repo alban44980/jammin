@@ -3,6 +3,8 @@ import FindJam from './components/FindJam/FindJam';
 import CreateJam from './components/CreateJam/CreateJam.jsx';
 import Home from './components/Home/Home';
 import EventPage from './components/EventPage/EventPage';
+import SignUp from './components/Signup/SignUp';
+import LogIn from './components/LogIn/LogIn';
 import './App.css';
 import Background from './images/back2.jpg';
 import React, { useState, useEffect } from 'react';
@@ -71,6 +73,8 @@ function App() {
               // component={FindJam}
             />
             <Route path="/jams/:id" exact component={EventPage} />
+            <Route path="/signup" exact component={SignUp} />
+            <Route path="/login" exact component={LogIn} />
           </Switch>
         </div>
         {/* <Route

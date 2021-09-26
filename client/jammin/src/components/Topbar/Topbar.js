@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './topbar.css';
+import { useHistory } from 'react-router-dom';
 
 function Topbar() {
+  const history = useHistory();
+
   return (
     <div className="nav-container">
       <Link to="/" class="linktag">
@@ -16,8 +19,12 @@ function Topbar() {
       </Link>
 
       <ul className="navbar-right">
-        <li className="nav-el">Login</li>
-        <li className="nav-el">Sign up</li>
+        <li className="nav-el" onClick={() => history.push(`/login`)}>
+          Login
+        </li>
+        <li className="nav-el" onClick={() => history.push(`/signup`)}>
+          Sign up
+        </li>
       </ul>
     </div>
   );
