@@ -59,7 +59,7 @@ apiService.login = (user) => {
     .catch((err) => console.log(err));
 };
 
-apiService.createUser = (user) => {
+apiService.register = (user) => {
   return (
     fetch(`${BASE_URL}/register`, {
       method: 'POST',
