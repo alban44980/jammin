@@ -15,7 +15,7 @@ router.get('/jams/:id', jams.getEvent);
 
 //users routes
 
-router.post('/users', users.createUser);
-router.get('/users/:id', users.getUserInfo);
+router.post('/register', users.register);
+router.post('/login', users.login);
 
 module.exports = router;
