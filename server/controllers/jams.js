@@ -19,9 +19,9 @@ exports.getJams = async (req, res) => {
 
 exports.postJam = async (req, res) => {
   try {
-    console.log(req.body);
     const result = await Jam.create(req.body);
     res.status(201);
+    console.log(result);
     res.json(result);
   } catch (e) {
     res.status(500);
