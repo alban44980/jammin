@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import apiService from '../../ApiService';
 import './login.css';
+import { useHistory } from 'react-router-dom';
 
 const initialState = {
   email: '',
@@ -9,6 +10,8 @@ const initialState = {
 
 function LogIn() {
   const [state, setState] = useState(initialState);
+
+  const history = useHistory();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -24,6 +27,7 @@ function LogIn() {
     const result = await apiService.login(state); //make the function return the event, await that
     console.log(result);
     setState(initialState);
+    history.push('/dashboard');
   }
 
   return (

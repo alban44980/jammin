@@ -5,26 +5,18 @@ import Home from './components/Home/Home';
 import EventPage from './components/EventPage/EventPage';
 import SignUp from './components/Signup/SignUp';
 import LogIn from './components/LogIn/LogIn';
+import Dashboard from './components/Dashboard/Dashboard';
 import './App.css';
-import Background from './images/back2.jpg';
 import React, { useState, useEffect } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-// let sectionStyle = {
-//   widht: '100vw',
-//   height: '100vh',
-//   backgroundImage: `url(${Background})`,
-//   backgroundRepeat: 'no-repeat',
-//   backgroundPosition: 'center',
-//   backgroundSize: 'cover',
-// };
 
 function App() {
   const [jams, setJams] = useState([]);
   const [searchVal, setSearchVal] = useState('');
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
+  const [userData, setUserData] = useState(null);
 
   const [hasSearch, setHasSearch] = useState(false);
 
@@ -73,8 +65,39 @@ function App() {
               // component={FindJam}
             />
             <Route path="/jams/:id" exact component={EventPage} />
-            <Route path="/signup" exact component={SignUp} />
-            <Route path="/login" exact component={LogIn} />
+            <Route
+              path="/signup"
+              exact
+              render={(props) => (
+                <SignUp
+                  {...props}
+                  userData={userData}
+                  setUserData={setUserData}
+                />
+              )}
+            />
+            <Route
+              path="/login"
+              exact
+              render={(props) => (
+                <LogIn
+                  {...props}
+                  userData={userData}
+                  setUserData={setUserData}
+                />
+              )}
+            />
+            <Route
+              path="/dashboard"
+              exact
+              render={(...props) => (
+                <Dashboard
+                  {...props}
+                  userData={userData}
+                  setUserData={setUserData}
+                />
+              )}
+            />
           </Switch>
         </div>
         {/* <Route

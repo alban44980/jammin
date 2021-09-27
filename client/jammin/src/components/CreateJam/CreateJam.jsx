@@ -113,7 +113,6 @@ function CreateJam() {
   return (
     <div className="createJam-main">
       <form className="jam-form" onSubmit={handleSubmit}>
-        {/* <h1>CREATE YOUR JAM 🥳🥳🥳 </h1> */}
         <input
           required
           type="text"

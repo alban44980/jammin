@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import apiService from '../../ApiService';
 import './signup.css';
+import { useHistory } from 'react-router-dom';
 
 const initialState = {
   firstname: '',
@@ -13,6 +14,8 @@ const initialState = {
 
 function SignUp() {
   const [state, setState] = useState(initialState);
+
+  const history = useHistory();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -28,6 +31,7 @@ function SignUp() {
     const user = await apiService.register(state); //make the function return the event, await that
     console.log('event data back from API ', user);
     setState(initialState);
+    history.push('/dashboard');
   }
 
   return (
