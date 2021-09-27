@@ -79,7 +79,6 @@ function EventPage(props) {
     }
     return false;
   }
-  isEventAdded('61509d3b0e30797abce2bfb4');
   //react fragment <> html element that has zero styling
 
   return (
