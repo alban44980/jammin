@@ -32,7 +32,7 @@
   height: 20%;
 }
 
-button:hover {
+input-btn:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 

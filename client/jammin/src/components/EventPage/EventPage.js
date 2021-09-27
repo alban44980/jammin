@@ -84,9 +84,12 @@ function EventPage(props) {
               <h2>{moment(data.date).format('MMM Do, h:mm a')}</h2>
               {isSignedUp ? (
                 isEventAdded(data._id) ? (
-                  <button>EVENT ADDED</button>
+                  <button className="event-added-btn">EVENT ADDED</button>
                 ) : (
-                  <button onClick={() => addToEvents(userData._id, data._id)}>
+                  <button
+                    className="add-btn"
+                    onClick={() => addToEvents(userData._id, data._id)}
+                  >
                     PARTICIPATE
                   </button>
                 )

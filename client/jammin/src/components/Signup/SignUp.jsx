@@ -76,7 +76,7 @@ function SignUp({ userData, setUserData, isSignedUp, setIsSignedUp }) {
           value={state.password}
           onChange={handleChange}
         />
-        <button>JOIN NOW</button>
+        <button className="signup-btn">JOIN NOW</button>
       </form>
     </div>
   );

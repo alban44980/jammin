@@ -20,14 +20,21 @@
   display: flex;
 }
 
-.data-item button {
+.event-added-btn {
   margin-left: auto;
   background-color: white;
   padding: 1rem;
   border-radius: 10px;
 }
 
-.data-item button:hover {
+.add-btn {
+  margin-left: auto;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.add-btn:hover {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   cursor: pointer;

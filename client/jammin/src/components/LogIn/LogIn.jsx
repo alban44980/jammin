@@ -51,7 +51,7 @@ function LogIn({ userData, setUserData, isSignedUp, setIsSignedUp }) {
           value={state.password}
           onChange={handleChange}
         />
-        <button>LOG IN</button>
+        <button className="input-btn">LOG IN</button>
       </form>
     </div>
   );

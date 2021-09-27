@@ -12,6 +12,8 @@
   width: 100%;
   overflow-y: scroll;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .msg-indiv {
