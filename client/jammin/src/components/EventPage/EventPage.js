@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './eventpage.css';
+import { useHistory } from 'react-router-dom';
 import Social from '../Social/Social.jsx';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import apiService from '../../ApiService';
 import Pin from '../../images/placeholder.png';
+import Voice from '../../images/voice.png';
 import moment from 'moment';
 
 const initialState = {
@@ -22,13 +24,23 @@ function EventPage(props) {
   const isSignedUp = props.isSignedUp;
   const setIsSignedUp = props.isSignedUp;
 
+  const history = useHistory();
+
   //create another state with initial
 
   useEffect(() => {
     apiService.getEvent(urlID).then((data) => {
       setData(data[0]);
     });
-  }, [msg, data]);
+  }, [msg]);
+
+  //BUG TO SOLVE WHEN PUTTING DATA WITH MESSAGES
+
+  // useEffect(() => {
+  //   apiService.getEvent(urlID).then((data) => {
+  //     setData(data[0]);
+  //   });
+  // }, [data]);
 
   // const data = props.location.state.jam;
   const libraries = ['places'];
@@ -99,7 +111,16 @@ function EventPage(props) {
                     PARTICIPATE
                   </button>
                 )
-              ) : null}
+              ) : (
+                <button
+                  className="add-btn"
+                  onClick={() => {
+                    history.push('/login');
+                  }}
+                >
+                  Login to participate
+                </button>
+              )}
             </div>
             <div className="data-item">
               <h1 id="title">{data.title}</h1>
@@ -111,9 +132,14 @@ function EventPage(props) {
                 <h2>{data.location}</h2>
               </div>
             </div>
-            <h2 className="data-item" id="languages">
-              Languages spoken: {data.languages}
-            </h2>
+            <div className="language-container">
+              <div className="voice-icon-container">
+                <img src={Voice} id="voice" alt="" />
+              </div>
+              <h2 className="data-item" id="languages">
+                {data.languages}
+              </h2>
+            </div>
             <p className="data-item" id="description">
               {data.description}
             </p>
