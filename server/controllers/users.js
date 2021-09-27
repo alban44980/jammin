@@ -26,3 +26,17 @@ exports.register = async (req, res) => {
     res.status(500);
   }
 };
+
+exports.addjam = async (req, res) => {
+  try {
+    console.log('addjam route');
+    const { id, jamId } = req.body;
+    const jam = await Jam.findOne({ _id: jamId });
+    console.log(jam);
+    await User.findOneAndUpdate({ _id: id }, { $push: { comingEvents: jam } });
+    res.status(201);
+    res.end();
+  } catch (error) {
+    res.status(500);
+  }
+};
