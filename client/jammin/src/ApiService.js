@@ -72,4 +72,17 @@ apiService.register = (user) => {
   );
 };
 
+apiService.addjam = (body) => {
+  return (
+    fetch(`${BASE_URL}/addjam`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      // .then((data) => console.log(data))
+      .catch((err) => console.log(err))
+  );
+};
+
 export default apiService;

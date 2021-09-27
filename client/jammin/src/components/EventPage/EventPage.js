@@ -21,7 +21,10 @@ function EventPage(props) {
   //initial state => from props || create another object for  initial
   const [data, setData] = useState(props.location?.state?.jam);
   const [msg, setMsg] = useState(initialState); //message state
+  const userData = props.userData;
+  const setUserData = props.setUserData;
   const isSignedUp = props.isSignedUp;
+  const setIsSignedUp = props.isSignedUp;
 
   //create another state with initial
 
@@ -50,6 +53,26 @@ function EventPage(props) {
 
   const center = data?.locCords;
 
+  async function addToEvents(userid, jamid) {
+    //POST REQUEST STRAIGHT AWAY TO DB
+    //await that
+    const body = {
+      id: userid,
+      jamId: jamid,
+    };
+
+    await apiService.addjam(body);
+    //send back from post request
+    console.log('addToEvents function');
+    console.log(userData);
+    console.log(data);
+    setUserData((previous) => ({
+      ...previous,
+      comingEvents: [...previous.comingEvents, data],
+    }));
+  }
+
+  //FUNCTION TO CHECK IF THE EVENT IS ALREADY IN THE USER DATA
   //react fragment <> html element that has zero styling
 
   return (
@@ -59,7 +82,11 @@ function EventPage(props) {
           <div className="event-data">
             <div className="data-item" id="date">
               <h2>{moment(data.date).format('MMM Do, h:mm a')}</h2>
-              {isSignedUp ? <button>PARTICIPATE</button> : null}
+              {isSignedUp ? (
+                <button onClick={() => addToEvents(userData._id, data._id)}>
+                  PARTICIPATE
+                </button>
+              ) : null}
             </div>
             <h1 className="data-item" id="title" s>
               {data.title}
