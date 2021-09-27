@@ -12,7 +12,7 @@ const initialState = {
   comingEvents: [],
 };
 
-function SignUp() {
+function SignUp({ userData, setUserData, isSignedUp, setIsSignedUp }) {
   const [state, setState] = useState(initialState);
 
   const history = useHistory();
@@ -29,7 +29,9 @@ function SignUp() {
   async function handleSubmit(e) {
     e.preventDefault();
     const user = await apiService.register(state); //make the function return the event, await that
-    console.log('event data back from API ', user);
+    console.log(user);
+    setUserData(user);
+    setIsSignedUp(true);
     setState(initialState);
     history.push('/dashboard');
   }

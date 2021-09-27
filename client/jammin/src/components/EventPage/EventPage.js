@@ -21,6 +21,7 @@ function EventPage(props) {
   //initial state => from props || create another object for  initial
   const [data, setData] = useState(props.location?.state?.jam);
   const [msg, setMsg] = useState(initialState); //message state
+  const isSignedUp = props.isSignedUp;
 
   //create another state with initial
 
@@ -56,10 +57,11 @@ function EventPage(props) {
       {data && (
         <>
           <div className="event-data">
-            <h2 className="data-item" id="date">
-              {moment(data.date).format('MMM Do, h:mm a')}
-            </h2>
-            <h1 className="data-item" id="title">
+            <div className="data-item" id="date">
+              <h2>{moment(data.date).format('MMM Do, h:mm a')}</h2>
+              {isSignedUp ? <button>PARTICIPATE</button> : null}
+            </div>
+            <h1 className="data-item" id="title" s>
               {data.title}
             </h1>
             <h2 className="data-item" id="location">

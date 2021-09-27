@@ -8,7 +8,7 @@ const initialState = {
   password: '',
 };
 
-function LogIn() {
+function LogIn({ userData, setUserData, isSignedUp, setIsSignedUp }) {
   const [state, setState] = useState(initialState);
 
   const history = useHistory();
@@ -24,8 +24,10 @@ function LogIn() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const result = await apiService.login(state); //make the function return the event, await that
-    console.log(result);
+    const user = await apiService.login(state);
+    console.log(user);
+    setUserData(user);
+    setIsSignedUp(true);
     setState(initialState);
     history.push('/dashboard');
   }

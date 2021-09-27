@@ -3,7 +3,7 @@ import './JamItem.css';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-function JamItem({ jam, highEvent, setHighEvent }) {
+function JamItem({ jam, highEvent, setHighEvent, isSignedUp }) {
   return (
     <div
       onMouseEnter={() => {

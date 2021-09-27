@@ -17,6 +17,7 @@ function App() {
   const [center, setCenter] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [userData, setUserData] = useState(null);
+  const [isSignedUp, setIsSignedUp] = useState(false);
 
   const [hasSearch, setHasSearch] = useState(false);
 
@@ -28,7 +29,12 @@ function App() {
     <Router>
       <div className="App">
         <div className="app-container">
-          <Topbar />
+          <Topbar
+            userData={userData}
+            setUserData={setUserData}
+            isSignedUp={isSignedUp}
+            setIsSignedUp={setIsSignedUp}
+          />
           <Switch>
             <Route
               path="/"
@@ -60,11 +66,27 @@ function App() {
                   setMarkers={setMarkers}
                   hasSearch={hasSearch}
                   setHasSearch={setHasSearch}
+                  userData={userData}
+                  setUserData={setUserData}
+                  isSignedUp={isSignedUp}
+                  setIsSignedUp={setIsSignedUp}
                 />
               )}
               // component={FindJam}
             />
-            <Route path="/jams/:id" exact component={EventPage} />
+            <Route
+              path="/jams/:id"
+              exact
+              render={(props) => (
+                <EventPage
+                  {...props}
+                  userData={userData}
+                  setUserData={setUserData}
+                  isSignedUp={isSignedUp}
+                  setIsSignedUp={setIsSignedUp}
+                />
+              )}
+            />
             <Route
               path="/signup"
               exact
@@ -73,6 +95,8 @@ function App() {
                   {...props}
                   userData={userData}
                   setUserData={setUserData}
+                  isSignedUp={isSignedUp}
+                  setIsSignedUp={setIsSignedUp}
                 />
               )}
             />
@@ -84,6 +108,8 @@ function App() {
                   {...props}
                   userData={userData}
                   setUserData={setUserData}
+                  isSignedUp={isSignedUp}
+                  setIsSignedUp={setIsSignedUp}
                 />
               )}
             />
@@ -95,6 +121,8 @@ function App() {
                   {...props}
                   userData={userData}
                   setUserData={setUserData}
+                  isSignedUp={isSignedUp}
+                  setIsSignedUp={setIsSignedUp}
                 />
               )}
             />

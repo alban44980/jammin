@@ -17,6 +17,19 @@
 .data-item {
   /* margin: 1rem */
   padding: 1rem;
+  display: flex;
+}
+
+.data-item button {
+  margin-left: auto;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.data-item button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 #date {

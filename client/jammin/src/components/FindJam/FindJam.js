@@ -35,6 +35,11 @@ function FindJam(props) {
   const hasSearch = props.hasSearch;
   const setHasSearch = props.setHasSearch;
 
+  const userData = props.userData;
+  const setUserData = props.setUserData;
+  const isSignedUp = props.isSignedUp;
+  const setIsSignedUp = props.setIsSignedUp;
+
   const [selected, setSelected] = useState(null);
   const [idRoute, setIdRoute] = useState(null);
   const [highEvent, setHighEvent] = useState(null);
@@ -112,6 +117,7 @@ function FindJam(props) {
                   jam={jam}
                   highEvent={highEvent}
                   setHighEvent={setHighEvent}
+                  isSignedUp={isSignedUp}
                 />
               ))
             : null}

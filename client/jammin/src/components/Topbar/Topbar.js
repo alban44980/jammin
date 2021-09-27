@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './topbar.css';
 import { useHistory } from 'react-router-dom';
 
-function Topbar() {
+function Topbar({ userData, setUserData, isSignedUp, setIsSignedUp }) {
   const history = useHistory();
 
   return (
@@ -18,14 +18,32 @@ function Topbar() {
         <li>Find Jam</li>
       </Link>
 
-      <ul className="navbar-right">
-        <li className="nav-el" onClick={() => history.push(`/login`)}>
-          Login
-        </li>
-        <li className="nav-el" onClick={() => history.push(`/signup`)}>
-          Sign up
-        </li>
-      </ul>
+      {isSignedUp ? (
+        <ul className="navbar-right">
+          <li className="nav-el" onClick={() => history.push(`/dashboard`)}>
+            Dashboard
+          </li>
+          <li
+            className="nav-el"
+            onClick={() => {
+              setUserData(null);
+              setIsSignedUp(false);
+              history.push(`/login`);
+            }}
+          >
+            Log Out
+          </li>
+        </ul>
+      ) : (
+        <ul className="navbar-right">
+          <li className="nav-el" onClick={() => history.push(`/login`)}>
+            Login
+          </li>
+          <li className="nav-el" onClick={() => history.push(`/signup`)}>
+            Sign up
+          </li>
+        </ul>
+      )}
     </div>
   );
 }
