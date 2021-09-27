@@ -30,7 +30,6 @@ function EventPage(props) {
 
   useEffect(() => {
     apiService.getEvent(urlID).then((data) => {
-      console.log(data);
       setData(data[0]);
     });
   }, [msg]);
@@ -66,11 +65,7 @@ function EventPage(props) {
     }));
   }
 
-  //FUNCTION TO CHECK IF THE EVENT IS ALREADY IN THE USER DATA
   function isEventAdded(jamid) {
-    console.log('isEventAdded function');
-    console.log(userData);
-    //loop through comingEvents
     const arr = userData.comingEvents;
     for (let i = 0; i < arr.length; i++) {
       if (arr[i]._id === jamid) {
@@ -79,7 +74,6 @@ function EventPage(props) {
     }
     return false;
   }
-  //react fragment <> html element that has zero styling
 
   return (
     <div className="event-container">
@@ -123,6 +117,8 @@ function EventPage(props) {
               msg={msg}
               setMsg={setMsg}
               initialState={initialState}
+              isSignedUp={isSignedUp}
+              userData={userData}
             />
           </div>
         </>

@@ -12,7 +12,6 @@ function Dashboard({ userData, setUserData }) {
 
   return (
     <div className="dashboard">
-      {console.log('coming Events ==>', userData)}
       {userData.comingEvents.length ? (
         <div className="dashboard-container">
           <h1>Hi {userData.firstname}</h1>

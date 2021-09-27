@@ -7,15 +7,15 @@ import apiService from '../../ApiService';
 //   message: '',
 // };
 
-function Social({ jam, msg, setMsg, initialState }) {
+function Social({ jam, msg, setMsg, initialState, isSignedUp, userData }) {
   // const [msg, setMsg] = useState(initialState); //message state
   // const [msgList, setMsgList] = useState(null);
 
   function handleChange(e) {
-    const { name, value } = e.target;
+    const text = e.target.value;
     setMsg((previous) => ({
-      ...previous,
-      [name]: value,
+      name: userData.firstname,
+      message: e.target.value,
     }));
   }
 
@@ -36,33 +36,29 @@ function Social({ jam, msg, setMsg, initialState }) {
         ))}
       </div>
       <div className="form-container">
-        <form className="social-form" onSubmit={handleSubmit}>
-          <div className="left-form">
-            <input
-              required
-              type="text"
-              placeholder="NAME"
-              name="name"
-              value={msg.name}
-              onChange={handleChange}
-              className="social-input"
-              id="name-input"
-            />
-            <textarea
-              required
-              type="text"
-              placeholder="MESSAGE"
-              name="message"
-              value={msg.message}
-              onChange={handleChange}
-              className="social-input"
-              id="message-input"
-            ></textarea>
+        {isSignedUp ? (
+          <form className="social-form" onSubmit={handleSubmit}>
+            <div className="left-form">
+              <textarea
+                required
+                type="text"
+                placeholder="MESSAGE"
+                name="message"
+                value={msg.message}
+                onChange={handleChange}
+                className="social-input"
+                id="message-input"
+              ></textarea>
+            </div>
+            <div className="right-form">
+              <button id="post-msg">POST</button>
+            </div>
+          </form>
+        ) : (
+          <div className="social-err">
+            <h2>Log in to use the chat !</h2>
           </div>
-          <div className="right-form">
-            <button id="post-msg">POST</button>
-          </div>
-        </form>
+        )}
       </div>
     </div>
   );

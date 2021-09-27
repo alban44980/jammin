@@ -128,14 +128,6 @@ function App() {
             />
           </Switch>
         </div>
-        {/* <Route
-          path="'/findjam"
-          render={(props) => (
-            <FindJam {...props} jams={jams} setJams={setJams} />
-          )}
-        /> */}
-        {/* render={(props) => <FindJam {...props} jams={jams} setJams={setJams} />} */}
-        {/* <div className="overlay"></div> */}
       </div>
     </Router>
   );

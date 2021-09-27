@@ -8,13 +8,13 @@ function Topbar({ userData, setUserData, isSignedUp, setIsSignedUp }) {
 
   return (
     <div className="nav-container">
-      <Link to="/" class="linktag">
+      <Link to="/" class="home-tag">
         <h2>Home</h2>
       </Link>
-      <Link to="/createjam" class="otherlinktag">
+      <Link to="/createjam" class="menu-tag">
         <li>Create Jam</li>
       </Link>
-      <Link to="/findjam" class="otherlinktag">
+      <Link to="/findjam" class="menu-tag">
         <li>Find Jam</li>
       </Link>
 
