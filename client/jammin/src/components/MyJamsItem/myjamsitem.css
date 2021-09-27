@@ -1,6 +1,7 @@
 .jamsitem-container {
   display: flex;
   width: 95%;
+  height: 16svh;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   margin: 10px;
@@ -17,7 +18,11 @@
 }
 
 .item-main {
-  width: 60%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
 }
 
 .item-main h1 {
@@ -25,7 +30,7 @@
 }
 
 .button-container {
-  width: 20%;
+  width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,5 +48,21 @@
 #see-btn:hover {
   color: whitesmoke;
   background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.trash-container {
+  width: 15%;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trash-container img {
+  height: 20%;
+}
+
+.trash-container img {
   cursor: pointer;
 }

@@ -2,8 +2,37 @@ import React from 'react';
 import './myjamsitem.css';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import Trash from '../../images/trash.png';
+import apiService from '../../ApiService';
 
-function MyJamsItem({ eventData }) {
+function MyJamsItem({ eventData, userData, setUserData }) {
+  console.log('user Data ==> ', userData.comingEvents);
+  console.log('setUserData ==> ', setUserData);
+
+  async function removeFromEvents(userid, jamid) {
+    const body = {
+      id: userid,
+      jamId: jamid,
+    };
+    await apiService.removejam(body);
+    //send back from post request
+    const filteredEvents = userData.comingEvents.filter(function (event) {
+      return event._id !== jamid;
+    });
+    setUserData((previous) => {
+      return { ...previous, comingEvents: filteredEvents };
+    });
+
+    // setUserData((previous) => {
+    //   console.log('Previous State ==> ', previous.comingEvents);
+    //   const filteredEvents = previous.comingEvents.filter(function (event) {
+    //     return event._id !== jamid;
+    //   });
+    //   console.log('filtered Events ==>', filteredEvents);
+    //   return filteredEvents;
+    // });
+  }
+
   return (
     <div className="jamsitem-container">
       <div className="date">
@@ -17,6 +46,13 @@ function MyJamsItem({ eventData }) {
         <Link to={`/jams/${eventData._id}`}>
           <button id="see-btn">See Event</button>
         </Link>
+      </div>
+      <div className="trash-container">
+        <img
+          src={Trash}
+          alt=""
+          onClick={() => removeFromEvents(userData._id, eventData._id)}
+        />
       </div>
     </div>
   );

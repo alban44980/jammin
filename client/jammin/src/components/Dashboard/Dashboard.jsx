@@ -2,26 +2,46 @@ import React, { useEffect } from 'react';
 import MyJamsItem from '../MyJamsItem/MyJamsItem';
 import './dashboard.css';
 
-function Dashboard({ userData }) {
+function Dashboard({ userData, setUserData }) {
   useEffect(() => {
     //sort events
     userData.comingEvents.sort(function (a, b) {
       return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
     });
-    console.log('useEffect working');
   }, []);
 
+  // useEffect(() => {
+  //   console.log('use effect triggered by userData being modified');
+  // }, [userData]);
+
   return (
-    <div className="dashboard-container">
-      <h1>Hi {userData.firstname}</h1>
-      <h2>Check out your upcoming events below: </h2>
-      <div className="myevents-list">
-        {userData.comingEvents.length
-          ? userData.comingEvents.map((event) => (
-              <MyJamsItem eventData={event} />
-            ))
-          : null}
-      </div>
+    <div>
+      {console.log('coming Events ==>', userData)}
+      {userData.comingEvents.length ? (
+        <div className="dashboard-container">
+          <h1>Hi {userData.firstname}</h1>
+          <h2>Check out your upcoming events below: </h2>
+          <div className="myevents-list">
+            {userData.comingEvents.length
+              ? userData.comingEvents.map((event) => (
+                  <MyJamsItem
+                    eventData={event}
+                    userData={userData}
+                    setUserData={setUserData}
+                  />
+                ))
+              : null}
+          </div>
+        </div>
+      ) : (
+        <div className="dashboard-container">
+          <h1>Hi {userData.firstname}</h1>
+          <h2>
+            You have no jams added yet, go the Find Jam section to find events
+            around you
+          </h2>
+        </div>
+      )}
     </div>
   );
 }
