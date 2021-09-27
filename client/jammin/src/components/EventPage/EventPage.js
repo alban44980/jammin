@@ -54,18 +54,12 @@ function EventPage(props) {
   const center = data?.locCords;
 
   async function addToEvents(userid, jamid) {
-    //POST REQUEST STRAIGHT AWAY TO DB
-    //await that
     const body = {
       id: userid,
       jamId: jamid,
     };
-
     await apiService.addjam(body);
     //send back from post request
-    console.log('addToEvents function');
-    console.log(userData);
-    console.log(data);
     setUserData((previous) => ({
       ...previous,
       comingEvents: [...previous.comingEvents, data],
@@ -73,6 +67,19 @@ function EventPage(props) {
   }
 
   //FUNCTION TO CHECK IF THE EVENT IS ALREADY IN THE USER DATA
+  function isEventAdded(jamid) {
+    console.log('isEventAdded function');
+    console.log(userData);
+    //loop through comingEvents
+    const arr = userData.comingEvents;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i]._id === jamid) {
+        return true;
+      }
+    }
+    return false;
+  }
+  isEventAdded('61509d3b0e30797abce2bfb4');
   //react fragment <> html element that has zero styling
 
   return (
@@ -83,9 +90,13 @@ function EventPage(props) {
             <div className="data-item" id="date">
               <h2>{moment(data.date).format('MMM Do, h:mm a')}</h2>
               {isSignedUp ? (
-                <button onClick={() => addToEvents(userData._id, data._id)}>
-                  PARTICIPATE
-                </button>
+                isEventAdded(data._id) ? (
+                  <button>EVENT ADDED</button>
+                ) : (
+                  <button onClick={() => addToEvents(userData._id, data._id)}>
+                    PARTICIPATE
+                  </button>
+                )
               ) : null}
             </div>
             <h1 className="data-item" id="title" s>
