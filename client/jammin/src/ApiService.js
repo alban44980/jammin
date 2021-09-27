@@ -79,6 +79,7 @@ apiService.register = (user) => {
         data.comingEvents.sort(function (a, b) {
           return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
         });
+        return data;
       })
       // .then((data) => console.log(data))
       .catch((err) => console.log(err))

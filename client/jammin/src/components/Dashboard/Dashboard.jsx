@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MyJamsItem from '../MyJamsItem/MyJamsItem';
 import './dashboard.css';
 
 function Dashboard({ userData }) {
+  useEffect(() => {
+    //sort events
+    userData.comingEvents.sort(function (a, b) {
+      return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+    });
+    console.log('useEffect working');
+  }, []);
+
   return (
     <div className="dashboard-container">
       <h1>Hi {userData.firstname}</h1>
