@@ -14,7 +14,12 @@ function MyJamsItem({ eventData, userData, setUserData }) {
       id: userid,
       jamId: jamid,
     };
+    const idToSend = {
+      id: jamid,
+    };
     await apiService.removejam(body);
+    await apiService.removeParticipant(idToSend);
+
     //send back from post request
     const filteredEvents = userData.comingEvents.filter(function (event) {
       return event._id !== jamid;

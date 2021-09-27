@@ -14,7 +14,7 @@ function Dashboard({ userData, setUserData }) {
     <div className="dashboard">
       {userData.comingEvents.length ? (
         <div className="dashboard-container">
-          <h1>Hi {userData.firstname}</h1>
+          <h1>Hi there {userData.firstname} !</h1>
           <h2>Check out your upcoming events below: </h2>
           <div className="myevents-list">
             {userData.comingEvents.length

@@ -28,7 +28,7 @@ function EventPage(props) {
     apiService.getEvent(urlID).then((data) => {
       setData(data[0]);
     });
-  }, [msg]);
+  }, [msg, data]);
 
   // const data = props.location.state.jam;
   const libraries = ['places'];
@@ -53,11 +53,21 @@ function EventPage(props) {
       id: userid,
       jamId: jamid,
     };
+
+    const idToSend = {
+      id: jamid,
+    };
     await apiService.addjam(body);
+    console.log(jamid);
+    await apiService.addParticipant(idToSend);
     //send back from post request
     setUserData((previous) => ({
       ...previous,
       comingEvents: [...previous.comingEvents, data],
+    }));
+    setData((previous) => ({
+      ...previous,
+      numOfParticipants: previous.numOfParticipants++,
     }));
   }
 
@@ -91,9 +101,10 @@ function EventPage(props) {
                 )
               ) : null}
             </div>
-            <h1 className="data-item" id="title" s>
-              {data.title}
-            </h1>
+            <div className="data-item">
+              <h1 id="title">{data.title}</h1>
+              <p id="participants">{data.numOfParticipants} going</p>
+            </div>
             <div className="data-item" id="location">
               <div className="img-container">
                 <img className="pin-img" src={Pin} alt="" />

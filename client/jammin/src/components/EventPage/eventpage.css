@@ -18,6 +18,14 @@
   /* margin: 1rem */
   padding: 1rem;
   display: flex;
+  position: relative;
+}
+
+#participants {
+  margin-left: auto;
+  position: relative;
+  right: 35px;
+  bottom: 27px;
 }
 
 .event-added-btn {
