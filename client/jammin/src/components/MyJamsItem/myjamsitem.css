@@ -1,0 +1,26 @@
+.jamsitem-container {
+  display: flex;
+  width: 95%;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 10px;
+  border: 1px solid whitesmoke;
+  padding: 1rem;
+  color: whitesmoke;
+}
+
+.date {
+  width: 20%;
+}
+
+.item-main {
+  width: 60%;
+}
+
+.item-main h1 {
+  margin: 0;
+}
+
+.button-container {
+  width: 20%;
+}
