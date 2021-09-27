@@ -10,12 +10,8 @@ function Dashboard({ userData, setUserData }) {
     });
   }, []);
 
-  // useEffect(() => {
-  //   console.log('use effect triggered by userData being modified');
-  // }, [userData]);
-
   return (
-    <div>
+    <div className="dashboard">
       {console.log('coming Events ==>', userData)}
       {userData.comingEvents.length ? (
         <div className="dashboard-container">

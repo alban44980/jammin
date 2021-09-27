@@ -22,15 +22,6 @@ function MyJamsItem({ eventData, userData, setUserData }) {
     setUserData((previous) => {
       return { ...previous, comingEvents: filteredEvents };
     });
-
-    // setUserData((previous) => {
-    //   console.log('Previous State ==> ', previous.comingEvents);
-    //   const filteredEvents = previous.comingEvents.filter(function (event) {
-    //     return event._id !== jamid;
-    //   });
-    //   console.log('filtered Events ==>', filteredEvents);
-    //   return filteredEvents;
-    // });
   }
 
   return (
