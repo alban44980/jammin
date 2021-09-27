@@ -50,3 +50,37 @@ exports.getEvent = async (req, res) => {
     res.status(500);
   }
 };
+
+exports.addParticipant = async (req, res) => {
+  try {
+    console.log('add participant route');
+    const { id } = req.body;
+    console.log(id);
+    let result = await Jam.findOneAndUpdate(
+      { _id: id },
+      { $inc: { numOfParticipants: 1 } },
+      { new: true }
+    );
+    res.status(201);
+    res.json(result);
+  } catch (error) {
+    res.status(500);
+  }
+};
+
+exports.removeParticipant = async (req, res) => {
+  try {
+    console.log('remove participant route');
+    const { id } = req.body;
+    console.log(id);
+    let result = await Jam.findOneAndUpdate(
+      { _id: id },
+      { $inc: { numOfParticipants: -1 } },
+      { new: true }
+    );
+    res.status(201);
+    res.json(result);
+  } catch (error) {
+    res.status(500);
+  }
+};
