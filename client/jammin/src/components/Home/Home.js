@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './home.css';
-// import FindJam from './FindJam';
-// import CreateJam from './CreateJam';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function Home(props) {
-  // const [jams, setJams] = useState([]);
-
-  // console.log('FindJam props : ', props);
-  // const jams = props.jams;
   const setJams = props.setJams;
   const setHasSearch = props.setHasSearch;
 

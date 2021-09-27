@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './eventpage.css';
 import Social from '../Social/Social.jsx';
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InfoWindow,
-} from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import apiService from '../../ApiService';
+import Pin from '../../images/placeholder.png';
 import moment from 'moment';
 
 const initialState = {
@@ -98,8 +94,14 @@ function EventPage(props) {
             <h1 className="data-item" id="title" s>
               {data.title}
             </h1>
-            <h2 className="data-item" id="location">
-              Location : {data.location}
+            <div className="data-item" id="location">
+              <div className="img-container">
+                <img className="pin-img" src={Pin} alt="" />
+                <h2>{data.location}</h2>
+              </div>
+            </div>
+            <h2 className="data-item" id="languages">
+              Languages spoken: {data.languages}
             </h2>
             <p className="data-item" id="description">
               {data.description}

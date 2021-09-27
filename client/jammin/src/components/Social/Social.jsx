@@ -2,26 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import './social.css';
 import apiService from '../../ApiService';
 
-// const initialState = {
-//   name: '',
-//   message: '',
-// };
-
 function Social({ jam, msg, setMsg, initialState, isSignedUp, userData }) {
-  // const [msg, setMsg] = useState(initialState); //message state
-  // const [msgList, setMsgList] = useState(null);
-
   const messagesEndRef = useRef(null);
   const dummyDiv = useRef();
 
   const scrollToBottom = () => {
-    console.log('SCROLL TO BOTTOM RUNNING');
     dummyDiv.current?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  // useEffect(() => {
-  //   scrollToBottom();
-  // }, [msg]);
 
   useEffect(() => {
     if (messagesEndRef) {
@@ -34,7 +21,6 @@ function Social({ jam, msg, setMsg, initialState, isSignedUp, userData }) {
   }, []);
 
   function handleChange(e) {
-    const text = e.target.value;
     setMsg((previous) => ({
       name: userData.firstname,
       message: e.target.value,
@@ -43,7 +29,7 @@ function Social({ jam, msg, setMsg, initialState, isSignedUp, userData }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const result = await apiService.postMessage(msg, jam._id);
+    await apiService.postMessage(msg, jam._id);
     setMsg(initialState);
   }
 
