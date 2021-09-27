@@ -11,6 +11,9 @@
 
 .date {
   width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-main {
@@ -23,4 +26,22 @@
 
 .button-container {
   width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#see-btn {
+  background-color: rgba(245, 245, 245, 0.7);
+  border-radius: 10px;
+  height: 4rem;
+  width: 8rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#see-btn:hover {
+  color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }

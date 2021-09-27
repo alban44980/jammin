@@ -15,7 +15,6 @@ function LogIn({ userData, setUserData, isSignedUp, setIsSignedUp }) {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    console.log(`${name}, ${value}`);
     setState((previous) => ({
       ...previous,
       [name]: value,
@@ -25,7 +24,6 @@ function LogIn({ userData, setUserData, isSignedUp, setIsSignedUp }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const user = await apiService.login(state);
-    console.log(user);
     setUserData(user);
     setIsSignedUp(true);
     setState(initialState);

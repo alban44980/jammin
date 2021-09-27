@@ -56,6 +56,13 @@ apiService.login = (user) => {
     body: JSON.stringify(user),
   })
     .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      data.comingEvents.sort(function (a, b) {
+        return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+      });
+      return data;
+    })
     .catch((err) => console.log(err));
 };
 
@@ -67,6 +74,12 @@ apiService.register = (user) => {
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        data.comingEvents.sort(function (a, b) {
+          return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+        });
+      })
       // .then((data) => console.log(data))
       .catch((err) => console.log(err))
   );
