@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import MyJamsItem from '../MyJamsItem/MyJamsItem';
 import './dashboard.css';
 

@@ -24,6 +24,8 @@ function EventPage(props) {
   const isSignedUp = props.isSignedUp;
   const setIsSignedUp = props.isSignedUp;
 
+  // const [num, setNum] = useState(data.numOfParticipants);
+
   const history = useHistory();
 
   //create another state with initial
@@ -46,8 +48,9 @@ function EventPage(props) {
   const libraries = ['places'];
   const mapContainerStyle = {
     width: '100%',
-    height: '100%',
+    height: '96%',
     borderRadius: '10px',
+    marginBottom: '10px',
   };
 
   const { isLoaded, loadError } = useLoadScript({
@@ -77,10 +80,14 @@ function EventPage(props) {
       ...previous,
       comingEvents: [...previous.comingEvents, data],
     }));
-    setData((previous) => ({
-      ...previous,
-      numOfParticipants: previous.numOfParticipants++,
-    }));
+    setData((previous) => {
+      console.log('previous', previous);
+      return {
+        ...previous,
+        numOfParticipants: previous.numOfParticipants + 1,
+      };
+    });
+    // setNum((previous) => previous + 1);
   }
 
   function isEventAdded(jamid) {
