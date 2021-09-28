@@ -41,8 +41,62 @@ h1 {
 
 .signup-btn:hover {
   background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+#firstname {
+  animation: positionChange 1s;
+  animation-fill-mode: forwards;
+}
+
+#lastname {
+  animation: positionChange2 1.5s;
+  animation-fill-mode: forwards;
+}
+
+#email {
+  animation: positionChange3 2s;
+  animation-fill-mode: forwards;
 }
 
 #password {
   margin-bottom: 2rem;
+  animation: positionChange4 2.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes positionChange {
+  0% {
+    transform: translate(-80px, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes positionChange2 {
+  0% {
+    transform: translate(-60px, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes positionChange3 {
+  0% {
+    transform: translate(-40px, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes positionChange4 {
+  0% {
+    transform: translate(-20px, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
 }

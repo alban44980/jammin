@@ -5,11 +5,14 @@
 }
 
 .App {
-  /* width: 100vw; */
+  /* width: 90vw; */
   background-image: url('./images/back2.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  /* background-size: cover; */
+
   animation: zoomIn 5s;
   animation-fill-mode: forwards;
 }
@@ -21,12 +24,12 @@
 
 @keyframes zoomIn {
   0% {
-    width: 100vw;
-    height: 100vh;
+    background-size: 100%;
   }
   100% {
-    width: 108vw;
+    width: 100vw;
     height: 100vh;
+    background-size: 110%;
   }
 }
 

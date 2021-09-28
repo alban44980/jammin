@@ -22,6 +22,7 @@
   align-items: center;
   height: 100%;
   width: 80%;
+  animation: appear 1s;
 }
 
 .search-city {
@@ -65,4 +66,16 @@
 .search-city input {
   margin-left: 6.3rem;
   height: 2rem;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translate(-40px, -300px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
 }

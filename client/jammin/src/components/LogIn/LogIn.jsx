@@ -35,7 +35,7 @@ function LogIn({ userData, setUserData, isSignedUp, setIsSignedUp }) {
       <form className="login-form" onSubmit={handleSubmit}>
         <input
           required
-          id="email"
+          id="mail"
           type="text"
           placeholder="Email"
           name="email"
@@ -44,7 +44,7 @@ function LogIn({ userData, setUserData, isSignedUp, setIsSignedUp }) {
         />
         <input
           required
-          id="password"
+          id="pwd"
           type="password"
           placeholder="Password"
           name="password"

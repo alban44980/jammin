@@ -32,10 +32,39 @@
   height: 20%;
 }
 
+.input-btn {
+  animation: appear 2s;
+}
+
 input-btn:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#password {
+#mail {
+  animation: fromLeft 0.5s;
+}
+
+#pwd {
   margin-bottom: 2rem;
+  animation: fromLeft 1s;
+}
+
+@keyframes fromLeft {
+  0% {
+    opacity: 0;
+    width: 10%;
+  }
+  100% {
+    opacity: 1;
+    width: 60%;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
