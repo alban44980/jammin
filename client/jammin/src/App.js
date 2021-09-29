@@ -47,7 +47,6 @@ function App() {
                   setHasSearch={setHasSearch}
                 />
               )}
-              // component={Home}
             />
             <Route path="/createjam" exact component={CreateJam} />
             <Route
@@ -72,7 +71,6 @@ function App() {
                   setIsSignedUp={setIsSignedUp}
                 />
               )}
-              // component={FindJam}
             />
             <Route
               path="/jams/:id"

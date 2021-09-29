@@ -6,9 +6,6 @@ import Trash from '../../images/trash.png';
 import apiService from '../../ApiService';
 
 function MyJamsItem({ eventData, userData, setUserData }) {
-  console.log('user Data ==> ', userData.comingEvents);
-  console.log('setUserData ==> ', setUserData);
-
   async function removeFromEvents(userid, jamid) {
     const body = {
       id: userid,

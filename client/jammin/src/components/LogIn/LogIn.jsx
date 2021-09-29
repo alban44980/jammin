@@ -8,7 +8,7 @@ const initialState = {
   password: '',
 };
 
-function LogIn({ userData, setUserData, isSignedUp, setIsSignedUp }) {
+function LogIn({ setUserData, setIsSignedUp }) {
   const [state, setState] = useState(initialState);
 
   const history = useHistory();

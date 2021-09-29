@@ -12,14 +12,13 @@ const initialState = {
   comingEvents: [],
 };
 
-function SignUp({ userData, setUserData, isSignedUp, setIsSignedUp }) {
+function SignUp({ setUserData, setIsSignedUp }) {
   const [state, setState] = useState(initialState);
 
   const history = useHistory();
 
   function handleChange(e) {
     const { name, value } = e.target;
-    console.log(`${name}, ${value}`);
     setState((previous) => ({
       ...previous,
       [name]: value,
@@ -29,7 +28,6 @@ function SignUp({ userData, setUserData, isSignedUp, setIsSignedUp }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const user = await apiService.register(state); //make the function return the event, await that
-    console.log(user);
     setUserData(user);
     setIsSignedUp(true);
     setState(initialState);
@@ -83,5 +81,3 @@ function SignUp({ userData, setUserData, isSignedUp, setIsSignedUp }) {
 }
 
 export default SignUp;
-
-//firstname LastName Email Password RepeatPassword

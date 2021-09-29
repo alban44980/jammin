@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './topbar.css';
 import { useHistory } from 'react-router-dom';
 
-function Topbar({ userData, setUserData, isSignedUp, setIsSignedUp }) {
+function Topbar({ setUserData, isSignedUp, setIsSignedUp }) {
   const history = useHistory();
 
   return (

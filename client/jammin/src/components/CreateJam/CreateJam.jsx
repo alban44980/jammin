@@ -26,7 +26,6 @@ function CreateJam() {
   const [state, setState] = useState(initialState);
   //
   const history = useHistory();
-  //use this setState to upade  the location
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -40,21 +39,17 @@ function CreateJam() {
   async function handleSubmit(e) {
     e.preventDefault();
     const event = await apiService.postEvent(state); //make the function return the event, await that
-    console.log('event data back from API ', event);
     const id = event._id;
     setState(initialState);
     history.push(`/jams/${id}`); //path with id
   }
 
   function setCity(loc) {
-    console.log('setCity function running');
     fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${loc}&key=${apiKey}`
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        // console.log(data.results[0].geometry.location);
         let coords = data.results[0].geometry.location;
         setState((previous) => ({
           ...previous,
@@ -65,15 +60,11 @@ function CreateJam() {
   }
 
   function setLocation(loc) {
-    console.log('setLocation function running');
-
-    //HERE WE WANNA GET THE COORDINATES FOR LOC
     fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${loc}&key=${apiKey}`
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results[0].geometry.location);
         let coords = data.results[0].geometry.location;
         setState((previous) => ({
           ...previous,
@@ -107,7 +98,6 @@ function CreateJam() {
     borderRadius: '20px',
     fontSize: '1.2rem',
     padding: '0.4rem',
-    // textAlign: 'center'
   };
 
   return (
@@ -131,15 +121,12 @@ function CreateJam() {
           onChange={handleChange}
           className="event-input main-inputs"
         />
-        {/* <div className="search-city"> */}
         <Search
           inputstyle={inputstyle}
           inputcontainstyle={inputcontainstyle}
           setCity={setCity}
           cityPlace={placeHolders.city}
         />
-        {/* </div> */}
-        {/* <div className="search-city"> */}
         <Search
           inputstyle={inputstyle}
           inputcontainstyle={inputcontainstyle}
@@ -147,7 +134,6 @@ function CreateJam() {
           state={state}
           locPlace={placeHolders.location}
         />
-        {/* </div> */}
         <input
           required
           type="text"

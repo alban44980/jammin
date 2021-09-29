@@ -22,29 +22,22 @@ const mapContainerStyle = {
 function FindJam(props) {
   const jams = props.jams;
   const setJams = props.setJams;
-  // const [searchVal, setSearchVal] = useState({ location: null });
   const searchVal = props.searchVal;
   const setSearchVal = props.setSearchVal;
-  // const [center, setCenter] = useState(null);
   const center = props.center;
   const setCenter = props.setCenter;
-  // const [markers, setMarkers] = useState([]);
   const markers = props.markers;
   const setMarkers = props.setMarkers;
 
   const hasSearch = props.hasSearch;
   const setHasSearch = props.setHasSearch;
 
-  const userData = props.userData;
-  const setUserData = props.setUserData;
   const isSignedUp = props.isSignedUp;
-  const setIsSignedUp = props.setIsSignedUp;
 
   const [selected, setSelected] = useState(null);
   const [idRoute, setIdRoute] = useState(null);
   const [highEvent, setHighEvent] = useState(null);
 
-  // const [error, setError] = useState(null);
   const findPlaceholder = 'Enter your city';
 
   function searchJams(input) {
@@ -63,17 +56,11 @@ function FindJam(props) {
     e.preventDefault();
     const result = await apiService.getJams({ city: searchVal });
     setHasSearch(true);
-    // if (!result.length) {
-    //   setError(true);
-    // } else {
-    //   setError(false);
-    // }
 
     setJams(result);
     let eventsCoords = getCoords(result);
     setMarkers(eventsCoords);
-    //get coordinates of every element of the array results
-    // setMarkers()
+
     fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${searchVal}&key=AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM`
     )
@@ -190,7 +177,3 @@ function FindJam(props) {
 }
 
 export default FindJam;
-
-//style
-
-//options for hover

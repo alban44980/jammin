@@ -16,19 +16,13 @@ const initialState = {
 function EventPage(props) {
   const pathname = window.location.pathname;
   const urlID = pathname.slice(6);
-  //initial state => from props || create another object for  initial
   const [data, setData] = useState(props.location?.state?.jam);
   const [msg, setMsg] = useState(initialState); //message state
   const userData = props.userData;
   const setUserData = props.setUserData;
   const isSignedUp = props.isSignedUp;
-  const setIsSignedUp = props.isSignedUp;
-
-  // const [num, setNum] = useState(data.numOfParticipants);
 
   const history = useHistory();
-
-  //create another state with initial
 
   useEffect(() => {
     apiService.getEvent(urlID).then((data) => {
@@ -36,15 +30,6 @@ function EventPage(props) {
     });
   }, [msg]);
 
-  //BUG TO SOLVE WHEN PUTTING DATA WITH MESSAGES
-
-  // useEffect(() => {
-  //   apiService.getEvent(urlID).then((data) => {
-  //     setData(data[0]);
-  //   });
-  // }, [data]);
-
-  // const data = props.location.state.jam;
   const libraries = ['places'];
   const mapContainerStyle = {
     width: '100%',
@@ -73,21 +58,17 @@ function EventPage(props) {
       id: jamid,
     };
     await apiService.addjam(body);
-    console.log(jamid);
     await apiService.addParticipant(idToSend);
-    //send back from post request
     setUserData((previous) => ({
       ...previous,
       comingEvents: [...previous.comingEvents, data],
     }));
     setData((previous) => {
-      console.log('previous', previous);
       return {
         ...previous,
         numOfParticipants: previous.numOfParticipants + 1,
       };
     });
-    // setNum((previous) => previous + 1);
   }
 
   function isEventAdded(jamid) {

@@ -1,5 +1,4 @@
 .createJam-main {
-  /* background-color:rgba(0, 0, 0, 0.7); */
   height: 85%;
   width: 90%;
   margin: 1rem auto;
@@ -52,15 +51,19 @@
 .create-btn {
   margin: 1rem;
   border-radius: 20px;
-  background-color: white;
   color: black;
   height: 4rem;
   width: 40%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
 }
 
 .create-btn:hover {
-  background-color: rgba(0, 0, 0, 0.7);
   color: white;
+  cursor: pointer;
+  background-position: left bottom;
 }
 
 .search-city input {

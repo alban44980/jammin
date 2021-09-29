@@ -30,7 +30,7 @@
   font-weight: 900;
   color: rgba(0, 0, 0, 0.8);
   opacity: 0;
-  animation: fadeIn 2s linear 4s;
+  animation: fadeIn 2s linear 3s;
   animation-fill-mode: forwards;
 }
 
@@ -40,7 +40,7 @@
   top: 10px;
   left: 160px;
   opacity: 0;
-  animation: fadeIn 1s linear 4.2s;
+  animation: fadeIn 1s linear 3.2s;
   animation-fill-mode: forwards;
 }
 
