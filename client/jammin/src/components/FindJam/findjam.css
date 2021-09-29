@@ -80,7 +80,6 @@
 }
 
 .btn-see-event {
-  /* background-color: rgba(0, 0, 0, 0.7); */
   padding: 0.5rem;
   color: black;
   border-radius: 20px;
@@ -101,11 +100,9 @@
   width: 30%;
   left: 350px;
   bottom: 250px;
-  /* left: 400px; */
 }
 
 #search-fail {
-  /* background-color: red; */
   color: rgba(0, 0, 0, 0.8);
   width: 80%;
   text-align: center;

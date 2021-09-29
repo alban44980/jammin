@@ -22,10 +22,11 @@
 #participants {
   margin-left: auto;
   position: relative;
-  right: 32px;
+  left: 80px;
   bottom: 27px;
   font-weight: bold;
   font-size: 1.5rem;
+  width: 30%;
 }
 
 .event-added-btn {

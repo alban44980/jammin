@@ -27,7 +27,7 @@ function SignUp({ setUserData, setIsSignedUp }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const user = await apiService.register(state); //make the function return the event, await that
+    const user = await apiService.register(state);
     setUserData(user);
     setIsSignedUp(true);
     setState(initialState);
