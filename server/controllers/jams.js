@@ -53,9 +53,7 @@ exports.getEvent = async (req, res) => {
 
 exports.addParticipant = async (req, res) => {
   try {
-    console.log('add participant route');
     const { id } = req.body;
-    console.log(id);
     let result = await Jam.findOneAndUpdate(
       { _id: id },
       { $inc: { numOfParticipants: 1 } },
@@ -70,9 +68,7 @@ exports.addParticipant = async (req, res) => {
 
 exports.removeParticipant = async (req, res) => {
   try {
-    console.log('remove participant route');
     const { id } = req.body;
-    console.log(id);
     let result = await Jam.findOneAndUpdate(
       { _id: id },
       { $inc: { numOfParticipants: -1 } },

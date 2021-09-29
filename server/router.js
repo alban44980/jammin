@@ -5,6 +5,7 @@ const jams = require('./controllers/jams');
 const users = require('./controllers/users');
 
 //jams routes
+
 router.post('/searchjam', jams.getJams);
 
 router.post('/jams', jams.postJam);
