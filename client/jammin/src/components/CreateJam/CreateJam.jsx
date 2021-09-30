@@ -3,6 +3,7 @@ import Search from '../Search/Search';
 import apiService from '../../ApiService';
 import './createjam.css';
 import { useHistory } from 'react-router-dom';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
@@ -27,6 +28,17 @@ function CreateJam() {
   //
   const history = useHistory();
 
+  const libraries = ['places'];
+
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: apiKey,
+    libraries,
+  });
+
+  if (loadError) return 'Error loading maps';
+  if (!isLoaded) return 'Loading Maps';
+
+  //
   function handleChange(e) {
     const { name, value } = e.target;
     console.log(`${name}, ${value}`);

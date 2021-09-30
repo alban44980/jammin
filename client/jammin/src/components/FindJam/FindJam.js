@@ -12,6 +12,8 @@ import {
 } from '@react-google-maps/api';
 import { Link } from 'react-router-dom';
 
+const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
 const libraries = ['places'];
 const mapContainerStyle = {
   width: '100%',
@@ -62,7 +64,7 @@ function FindJam(props) {
     setMarkers(eventsCoords);
 
     fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${searchVal}&key=AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM`
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${searchVal}&key=${apiKey}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -83,7 +85,7 @@ function FindJam(props) {
   }
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM',
+    googleMapsApiKey: apiKey,
     libraries,
   });
 

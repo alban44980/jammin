@@ -7,7 +7,6 @@ function JamItem({ jam, highEvent, setHighEvent, isSignedUp }) {
   return (
     <div
       onMouseEnter={() => {
-        console.log('jamCoords : ', jam.locCords);
         setHighEvent(jam.locCords);
       }}
       onMouseLeave={() => {

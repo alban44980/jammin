@@ -13,6 +13,8 @@ const initialState = {
   message: '',
 };
 
+const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
 function EventPage(props) {
   const pathname = window.location.pathname;
   const urlID = pathname.slice(6);
@@ -39,7 +41,7 @@ function EventPage(props) {
   };
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyCaWssSgkyqO9SyAJ7VvTonQ1ASzdyQ6oM',
+    googleMapsApiKey: apiKey,
     libraries,
   });
 
