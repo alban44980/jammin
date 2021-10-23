@@ -10,3 +10,5 @@ To run the project :
   REACT_APP_GOOGLE_MAPS_API_KEY=yourkey
 
 Hope you enjoy the app, any feedback/PR is appreciated !
+
+Tech Stack: MERN (Mongo Express React Node), Google Maps API.
