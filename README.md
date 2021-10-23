@@ -1,3 +1,5 @@
+# Jammin'
+
 Jammin' is a web application that allows musicians to find jam sessions arround their location.
 
 To run the project :
